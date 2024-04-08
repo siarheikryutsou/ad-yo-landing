@@ -7,9 +7,18 @@ html {
     @apply w-full h-full;
 
     body {
-        @apply w-full h-full font-normal;
+        @apply w-full h-full text-3xl font-medium;
         #__nuxt {
             @apply min-h-full flex flex-col;
+
+            h1 {
+                @apply text-8xl font-semibold;
+            }
+
+            section {
+                @apply w-full h-dvh;
+            }
+
             .nuxt-icon {
                 display: flex;
 

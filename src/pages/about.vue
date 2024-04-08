@@ -3,7 +3,13 @@
 </script>
 
 <template>
-  <h1>About</h1>
+  <section>
+    <h1>About</h1>
+  </section>
+
+  <section>Team</section>
+
+  <section>Roadmap</section>
 </template>
 
 <style scoped>
