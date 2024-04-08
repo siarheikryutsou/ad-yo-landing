@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    font-family: Monserrat, sans-serif;
+    @apply w-full h-full;
+
+    body {
+        @apply w-full h-full font-normal;
+        #__nuxt {
+            @apply min-h-full flex flex-col;
+            .nuxt-icon {
+                display: flex;
+
+                svg {
+                    width: initial;
+                    height: initial;
+                    margin-bottom: initial;
+                    vertical-align: initial;
+                }
+            }
+        }
+    }
+}
