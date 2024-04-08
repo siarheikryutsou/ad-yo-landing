@@ -29,6 +29,12 @@ const menuItems = [
   ]
 ];
 
+function onKeyDown(event: KeyboardEvent) {
+  if (event.key === "Escape") {
+    showMenu.value = false;
+  }
+}
+
 function onClick(event: MouseEvent) {
   const target = event.target as Node;
   if (target && showMenu.value) {
@@ -41,10 +47,12 @@ function onClick(event: MouseEvent) {
 
 onMounted(() => {
   window.addEventListener("click", onClick);
+  window.addEventListener("keydown", onKeyDown);
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("click", onClick);
+  window.removeEventListener("keydown", onKeyDown);
 })
 
 </script>
