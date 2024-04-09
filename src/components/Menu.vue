@@ -60,19 +60,26 @@ onBeforeUnmount(() => {
 <template>
   <nav class="relative" ref="refMenu">
     <div class="flex justify-end">
-      <button class="flex-auto flex-shrink flex-grow-0 text-white font-semibold text-4xl bg-black px-20 py-3 group"
+      <button class="flex-auto flex-shrink flex-grow-0 text-white font-semibold text-lg bg-black px-10 py-1.5 group"
               @click="showMenu = !showMenu">
         <span class="group-hover:opacity-70 transition">menu</span>
       </button>
     </div>
 
-    <div v-show="showMenu" class="absolute right-[70px]">
-      <ul v-for="menuRow in menuItems" class="flex justify-end -mt-px">
-        <li v-for="menuItem in menuRow" class="-mr-px">
+    <div v-show="showMenu" class="absolute right-[35px]">
+      <ul v-for="(menuRow, index) in menuItems" :key="index" class="flex justify-end -mt-px">
+        <li v-for="menuItem in menuRow"
+            class="-mr-px"
+            :key="menuItem.name"
+        >
           <nuxt-link :to="menuItem.path"
-                     class="flex border border-black text-black font-medium text-3xl whitespace-nowrap">
+                     class="flex border border-black text-black font-medium text-lg whitespace-nowrap opacity-0"
+                     :class="{'animate-anim-menu-item-show': showMenu}"
+                     :style="`animation-delay: ${Math.round(Math.random() * 350)}ms`"
+
+          >
             <span
-              class="px-4 py-1 border border-white bg-white hover:bg-black hover:text-white transition-colors ease-in duration-200"
+              class="px-2 py-1 border border-white bg-white hover:bg-black hover:text-white transition-colors ease-in duration-200"
               :class="{'text-white !bg-black transition-none' : menuItem.path === route.fullPath}">
               {{ menuItem.name }}
             </span>
