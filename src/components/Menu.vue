@@ -74,7 +74,7 @@ onBeforeUnmount(() => {
         >
           <nuxt-link :to="menuItem.path"
                      class="flex border border-black text-black font-medium text-lg whitespace-nowrap opacity-0"
-                     :class="{'animate-anim-menu-item-show': showMenu}"
+                     :class="{'animate-menu-item-show': showMenu}"
                      :style="`animation-delay: ${Math.round(Math.random() * 350)}ms`"
 
           >
