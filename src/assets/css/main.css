@@ -2,21 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+
+}
+
+@layer utilities {
+
+    .ease-in-cubic {
+        animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
+    }
+
+    .ease-in-quint {
+        animation-timing-function: cubic-bezier(0.64, 0, 0.78, 0);
+    }
+
+    @keyframes kf-fade-in {
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes kf-intro-logo-disperse {
+        to {
+            width: 100%
+        }
+    }
+
+    @keyframes kf-logo-letter-fade-in {
+        0% {
+            opacity: 1;
+        }
+
+        70% {
+            opacity: 0;
+            width: 50px;
+        }
+
+
+        to {
+            opacity: 0;
+            width: 0;
+            padding: 0;
+        }
+    }
+
+    .animate-menu-item-show {
+        animation: kf-fade-in 300ms ease-out forwards;
+    }
+
+    .animate-intro-logo-disperse {
+        @apply ease-in-cubic;
+        animation-name: kf-intro-logo-disperse;
+        animation-duration: 1000ms;
+        animation-delay: 500ms;
+        animation-fill-mode: forwards;
+    }
+
+    .animate-logo-letter {
+        animation-timing-function: ease-in;
+        animation-name: kf-logo-letter-fade-in;
+        animation-duration: 300ms;
+        animation-delay: 1250ms;
+        animation-fill-mode: forwards;
+
+    }
+}
+
 html {
     font-family: Monserrat, sans-serif;
     @apply w-full h-full;
 
     body {
         @apply w-full h-full text-3xl font-medium;
+
         #__nuxt {
             @apply min-h-full flex flex-col;
 
             h1 {
-                @apply text-8xl font-semibold;
+                @apply text-5xl font-semibold leading-normal;
             }
 
             section {
-                @apply w-full h-dvh;
+                @apply w-full min-h-dvh;
+            }
+
+            .wrapper {
+                @apply p-10;
             }
 
             .nuxt-icon {
