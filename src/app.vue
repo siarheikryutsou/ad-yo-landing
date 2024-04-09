@@ -1,6 +1,6 @@
 <template>
-  <header class="flex justify-between items-center">
-    <nuxt-link to="/" class="pl-20" aria-label="Ad-Yo Logo">
+  <header class="flex justify-between items-center fixed w-full z-50">
+    <nuxt-link to="/" class="pl-10" aria-label="Ad-Yo Logo">
       <nuxt-icon filled name="header_logo" />
     </nuxt-link>
     <Menu />
