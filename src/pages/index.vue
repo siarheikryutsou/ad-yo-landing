@@ -3,8 +3,11 @@
 </script>
 
 <template>
-  <section>
-    <h1 class="w-1/2 mt-28">Blockchain protocol for digital advertising</h1>
+  <section class="relative">
+    <div class="wrapper">
+      <h1 class="max-w-[530px] mt-24">Blockchain protocol for digital advertising</h1>
+    </div>
+    <Intro />
   </section>
 
   <section class="bg-[#EAEAEA] px-24 py-40 flex flex-col justify-center">
@@ -32,7 +35,7 @@
     </div>
 
   </section>
-    <h2>The transaction for viewed ads is conducted between customers and advertisers without third parties</h2>
+  <h2>The transaction for viewed ads is conducted between customers and advertisers without third parties</h2>
   <section>
 
   </section>
@@ -66,6 +69,8 @@
   </section>
 
   <section>
-
+    <div class="wrapper">
+      <h2>A new paradigm in digital advertising</h2>
+    </div>
   </section>
 </template>
