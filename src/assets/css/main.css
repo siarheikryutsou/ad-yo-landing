@@ -22,6 +22,12 @@
         }
     }
 
+    @keyframes kf-fade-out {
+        to {
+            opacity: 0;
+        }
+    }
+
     @keyframes kf-intro-logo-disperse {
         to {
             width: 100%
@@ -45,6 +51,25 @@
             padding: 0;
         }
     }
+    
+    @keyframes kf-shades-show {
+        from {
+            height: 0;
+        }
+
+        to {
+            height: 50%;
+        }
+    }
+
+    @keyframes kf-logo-to-white {
+        from {
+            color: #000;
+        }
+        to {
+            color: #fff;
+        }
+    }
 
     .animate-menu-item-show {
         animation: kf-fade-in 300ms ease-out forwards;
@@ -61,8 +86,32 @@
     .animate-logo-letter {
         animation-timing-function: ease-in;
         animation-name: kf-logo-letter-fade-in;
+        animation-duration: 250ms;
+        animation-delay: 1100ms;
+        animation-fill-mode: forwards;
+    }
+
+    .animate-index-h1-show {
+        @apply ease-in-cubic;
+        animation-name: kf-fade-in;
         animation-duration: 300ms;
-        animation-delay: 1250ms;
+        animation-delay: 1900ms;
+        animation-fill-mode: forwards;
+    }
+
+    .animate-shade-show {
+        @apply ease-in-cubic;
+        animation-name: kf-shades-show;
+        animation-duration: 500ms;
+        animation-delay: 1500ms;
+        animation-fill-mode: forwards;
+    }
+
+    .animate-logo-to-white {
+        @apply ease-in-cubic;
+        animation-name: kf-logo-to-white;
+        animation-duration: 300ms;
+        animation-delay: 1850ms;
         animation-fill-mode: forwards;
 
     }
@@ -79,7 +128,7 @@ html {
             @apply min-h-full flex flex-col;
 
             h1 {
-                @apply text-5xl font-semibold leading-normal;
+                @apply text-3xl md:text-5xl font-semibold leading-normal md:leading-normal;
             }
 
             section {
@@ -87,7 +136,7 @@ html {
             }
 
             .wrapper {
-                @apply p-10;
+                @apply p-6 md:p-10;
             }
 
             .nuxt-icon {
