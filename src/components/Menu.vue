@@ -45,15 +45,28 @@ function onClick(event: MouseEvent) {
   }
 }
 
+function setMenuItemsDelay() {
+  document.querySelectorAll(".menu-item").forEach((el, index) => {
+    (el as HTMLElement).style.animationDelay = `${Math.round(Math.random() * 350)}ms`;
+  });
+}
+
 onMounted(() => {
   window.addEventListener("click", onClick);
   window.addEventListener("keydown", onKeyDown);
+  setMenuItemsDelay();
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("click", onClick);
   window.removeEventListener("keydown", onKeyDown);
-})
+});
+
+watch(showMenu, () => {
+  if (showMenu.value) {
+    setMenuItemsDelay();
+  }
+});
 
 </script>
 
@@ -73,9 +86,8 @@ onBeforeUnmount(() => {
             :key="menuItem.name"
         >
           <nuxt-link :to="menuItem.path"
-                     class="flex border border-black text-black font-medium text-lg whitespace-nowrap opacity-0"
+                     class="menu-item flex border border-black text-black font-medium text-lg whitespace-nowrap opacity-0"
                      :class="{'animate-menu-item-show': showMenu}"
-                     :style="`animation-delay: ${Math.round(Math.random() * 350)}ms`"
 
           >
             <span
