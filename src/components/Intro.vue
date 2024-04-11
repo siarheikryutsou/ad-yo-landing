@@ -9,13 +9,11 @@ function onLogoLettersAnimationEnd(event: Event): void {
 }
 
 onMounted(() => {
-  console.log(refAd.value);
   refAd.value?.addEventListener("animationend", onLogoLettersAnimationEnd);
   refYo.value?.addEventListener("animationend", onLogoLettersAnimationEnd);
 });
 
 onBeforeUnmount(() => {
-  console.log("!!!");
   refAd.value?.removeEventListener("animationend", onLogoLettersAnimationEnd);
   refYo.value?.removeEventListener("animationend", onLogoLettersAnimationEnd);
 })

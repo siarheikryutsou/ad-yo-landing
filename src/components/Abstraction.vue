@@ -12,18 +12,16 @@ const canvasWidth = 150;
 const canvasCenterX = canvasWidth / 2;
 let animator: AdYoCanvasAnimator;
 const sizesWeights = [50, 25, 10, 7, 3];
+let lastY = 0;
+const pt = 4;
+const sizes = [pt, pt*2, pt*5, pt*12, pt*18];
+const minWidth = pt*3;
+const maxWidth = Math.round(canvasCenterX);
 
-onMounted(() => {
-  if (refCanvas.value) {
-    let lastY = 0;
-    const pt = 4;
-    const sizes = [pt, pt*2, pt*5, pt*12, pt*18];
-    const minWidth = pt*3;
-    const maxWidth = Math.round(canvasCenterX);
-
-    animator = new AdYoCanvasAnimator(refCanvas.value, canvasWidth, pt);
-
-    while(lastY < refCanvas.value?.height) {
+function fillCanvas() {
+  const canvas = refCanvas.value;
+  if(canvas) {
+    while (lastY < canvas.height) {
       const xStart = Math.random() > 0.5 ? canvasCenterX : Math.random() * canvasCenterX;
       const widthStart = minWidth + (Math.random() * (maxWidth - minWidth));
       const h = sizes[weighedRandom(sizesWeights)];
@@ -35,7 +33,7 @@ onMounted(() => {
 
       addLoopAnimation(
         { x: xStart, y: lastY, width: widthStart, height: h },
-        { x: xEnd, width: widthEnd},
+        { x: xEnd, width: widthEnd },
         duration,
         delay,
         EASE.IN_OUT_CUBIC
@@ -43,10 +41,8 @@ onMounted(() => {
 
       lastY += h + margin;
     }
-
-    animator.start();
   }
-});
+}
 
 function addLoopAnimation(fromProps: IAnimationProps, toProps: IAnimationProps, duration: number, delay: number, ease: IEasingFunction, startsFromPercentage: number = 0) {
   const square = new Square(fromProps.x, fromProps.y, fromProps.width, fromProps.height, "white");
@@ -90,9 +86,56 @@ function weighedRandom(weights: number[]): number {
   return 0;
 }
 
+function addAnimations() {
+  if(!animator) return;
+  const animations = animator.getAnimations();
+
+  const lastAnimation = animations.reduce((max, current) => {
+    return (max.displayObject.bottom > current.displayObject.bottom) ? max : current;
+  });
+
+  if(lastAnimation.displayObject.y < window.innerHeight) {
+    lastY = lastAnimation.displayObject.bottom;
+    fillCanvas();
+  }
+}
+
+function removeAnimations() {
+  const animations = animator.getAnimations();
+  animations.forEach(animation => {
+    if(animation.displayObject.y > window.innerHeight) {
+      animator.removeAnimation(animation);
+    }
+  });
+}
+
+function onResize(event?: Event): void {
+  if (refCanvas.value) {
+    const canvas = refCanvas.value;
+    canvas.width = 150;
+    if(window.innerHeight > canvas.height) {
+      addAnimations();
+      canvas.height = window.innerHeight;
+    } else if(window.innerHeight < canvas.height) {
+      removeAnimations();
+      canvas.height = window.innerHeight;
+    }
+  }
+}
+
+onMounted(() => {
+  if (refCanvas.value) {
+    window.addEventListener("resize", onResize);
+    onResize();
+    animator = new AdYoCanvasAnimator(refCanvas.value, canvasWidth, pt);
+    fillCanvas();
+    animator.start();
+  }
+});
 
 onBeforeUnmount(() => {
   animator?.stop();
+  window.removeEventListener("resize", onResize);
 });
 
 </script>

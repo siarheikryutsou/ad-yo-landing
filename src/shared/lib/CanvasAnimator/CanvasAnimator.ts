@@ -4,16 +4,18 @@ export class CanvasAnimator {
   protected readonly canvas: HTMLCanvasElement;
   protected readonly context: CanvasRenderingContext2D;
   protected animations: CanvasAnimatorAnimation[] = [];
+  private paused = false;
   private animationFrameId: number | null = null;
+  private startTime: number = 0;
+  private pauseTime: number = 0;
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
     this.context = this.canvas.getContext("2d") as CanvasRenderingContext2D;
-    this.setSize();
-    window.addEventListener("resize", () => this.setSize());
   }
 
   public start() {
+    this.startTime = performance.now();
     this.animate();
   }
 
@@ -24,6 +26,23 @@ export class CanvasAnimator {
     }
   }
 
+  public pause() {
+    this.paused = true;
+    this.pauseTime = performance.now();
+  }
+
+  public resume() {
+    this.paused = false;
+    this.startTime += performance.now() - this.pauseTime;
+    this.animate();
+  }
+
+  public togglePause(force?: boolean) {
+    const value = force !== undefined ? force : !this.paused;
+    value ? this.pause() : this.resume();
+
+  }
+
   public addAnimation(animation: CanvasAnimatorAnimation): void {
     this.animations.push(animation);
   }
@@ -32,9 +51,19 @@ export class CanvasAnimator {
     this.animations = this.animations.filter(el => el !== animation);
   }
 
+  public getAnimations(): CanvasAnimatorAnimation[] {
+    return this.animations;
+  }
+
+  public removeCompletedAnimations() {
+    this.animations = this.animations.filter(animation => !animation.isComplete);
+  }
+
   private animate() {
+    if(this.paused) return;
     const currentTime = performance.now();
-    this.update(currentTime);
+    const elapsedTime = currentTime - this.startTime;
+    this.update(elapsedTime);
     this.draw();
 
     if (this.animations.length > 0) {
@@ -42,9 +71,8 @@ export class CanvasAnimator {
     }
   }
 
-  private update(currentTime: number) {
-    this.animations.forEach(animation => animation.update(currentTime));
-    /*this.animations = this.animations.filter(animation => !animation.isComplete);*/
+  private update(elapsedTime: number) {
+    this.animations.forEach(animation => animation.update(elapsedTime));
   }
 
   protected draw() {
@@ -56,9 +84,4 @@ export class CanvasAnimator {
     });
   }
 
-  private setSize() {
-    const rect = this.canvas.getBoundingClientRect();
-    /*this.canvas.width = rect.width;*/
-    this.canvas.height = rect.height;
-  }
 }
