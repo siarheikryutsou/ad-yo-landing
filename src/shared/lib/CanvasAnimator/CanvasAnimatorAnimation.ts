@@ -3,14 +3,14 @@ import { type DisplayObject, EASE, type IAnimationProps, type IEasingFunction } 
 export class CanvasAnimatorAnimation {
 
   private readonly el: DisplayObject;
-  private readonly to: IAnimationProps;
+  private to: IAnimationProps;
   private readonly duration: number;
   private readonly easing: IEasingFunction;
-  private readonly delay: number;
+  private delay: number;
   private readonly onComplete?: (animation: CanvasAnimatorAnimation) => void;
   private readonly onStart?: (animation: CanvasAnimatorAnimation) => void;
   private startTime: number | null = null
-  private readonly from: IAnimationProps;
+  private from: IAnimationProps;
   private completed: boolean = false;
 
   constructor(
@@ -30,12 +30,15 @@ export class CanvasAnimatorAnimation {
     this.onComplete = onComplete;
     this.onStart = onStart;
     this.from = {};
-    for(const propKey in to) {
-      if(propKey in el) {
-        const key = propKey as keyof IAnimationProps;
-        this.from[key] = el[key];
-      }
-    }
+    this.setFrom(to);
+  }
+
+  public setTarget(to: IAnimationProps, delay: number = 0): void {
+    this.to = to;
+    this.setFrom(to);
+    this.startTime = null;
+    this.delay = delay;
+    this.completed = false;
   }
 
   public update(currentTime: number): void {
@@ -72,5 +75,15 @@ export class CanvasAnimatorAnimation {
 
   public get displayObject(): DisplayObject {
     return this.el;
+  }
+
+  private setFrom(to: IAnimationProps): void {
+    this.from = {};
+    for(const propKey in to) {
+      if(propKey in this.el) {
+        const key = propKey as keyof IAnimationProps;
+        this.from[key] = this.el[key];
+      }
+    }
   }
 }

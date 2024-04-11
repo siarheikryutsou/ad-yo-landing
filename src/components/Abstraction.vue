@@ -1,85 +1,128 @@
 <script setup lang="ts">
 import {
-  CanvasAnimator,
   CanvasAnimatorAnimation,
   EASE,
   type IAnimationProps, type IEasingFunction,
   Square
 } from "~/shared/lib/CanvasAnimator";
+import { AdYoCanvasAnimator } from "~/shared";
 
 const refCanvas = ref<HTMLCanvasElement>();
-const canvasWidth = 200;
-let animator: CanvasAnimator;
+const canvasWidth = 150;
+const canvasCenterX = canvasWidth / 2;
+let animator: AdYoCanvasAnimator;
+const sizesWeights = [50, 25, 10, 7, 3];
 
 onMounted(() => {
   if (refCanvas.value) {
-    /*const square1 = new Square(100, 0, 0, 86, "white");
-    const square2 = new Square(100, 0, 0, 86, "white");
+    animator = new AdYoCanvasAnimator(refCanvas.value, canvasWidth);
 
-    let animations = [
-      new CanvasAnimatorAnimation(square1, { width: 38, x: 0 }, 3000, 0, EASE.IN_OUT_CUBIC, (animation: CanvasAnimatorAnimation) => {
-        animator.removeAnimation(animation);
-        animator.addAnimation(new CanvasAnimatorAnimation(square1, { width: 0, x: 100 }, 3000, 2000, EASE.IN_OUT_CUBIC, (animation) => {
-          animator.removeAnimation(animation);
-          animator.addAnimation(new CanvasAnimatorAnimation(square1, { width: 38, x: 0 }, 3000, 2000, EASE.IN_OUT_CUBIC));
+    /*addLoopAnimation(
+      { x: canvasCenterX, y: 0, width: 30, height: 70 },
+      { x: 0 },
+      3000,
+      1000,
+      EASE.IN_OUT_CUBIC,
+      50
+    );
 
-        }));
-      }),
-      new CanvasAnimatorAnimation(square2, { width: 38, x: 200 - 38 }, 3000, 0, EASE.IN_OUT_CUBIC, (animation) => {
-        animator.removeAnimation(animation);
-        animator.addAnimation(new CanvasAnimatorAnimation(square2, { width: 0, x: 100 }, 3000, 2000, EASE.IN_OUT_CUBIC, (animation) => {
-          animator.removeAnimation(animation);
-          animator.addAnimation(new CanvasAnimatorAnimation(square2, { width: 38, x: 200 - 38 }, 3000, 2000, EASE.IN_OUT_CUBIC));
-
-        }));
-      }),
-    ];*/
-    animator = new CanvasAnimator(refCanvas.value);
     addLoopAnimation(
-      {x: 100, y: 0, width: 0, height: 86},
-      {width: 38, x: 0},
+      { x: 0, y: 80, width: 30, height: 4 },
+      { width: 15, x: canvasCenterX },
       3000,
       1000,
       EASE.IN_OUT_CUBIC
     );
+
+    addLoopAnimation(
+      { x: 15, y: 84, width: 30, height: 4 },
+      { width: 30, x: canvasCenterX },
+      3500,
+      1000,
+      EASE.IN_OUT_CUBIC
+    );
+
+    addLoopAnimation(
+      { x: canvasCenterX, y: 92, width: 0, height: 4 },
+      { width: 35, x: 0 },
+      4500,
+      1200,
+      EASE.IN_OUT_CUBIC
+    );*/
+
+    let lastY = 0;
+    const pt = 4;
+    const sizes = [pt, pt*2, pt*5, pt*12, pt*18];
+    const minWidth = pt*3;
+    const maxWidth = Math.round(canvasCenterX);
+
+    for(let i = 0; i < 100; i++) {
+      const xStart = Math.random() > 0.5 ? canvasCenterX : Math.random() * canvasCenterX;
+      const widthStart = minWidth + (Math.random() * (maxWidth - minWidth));
+      const h = sizes[weighedRandom(sizesWeights)];
+      const widthEnd = Math.random() * canvasCenterX;
+      const xEnd = xStart === canvasCenterX ? 0 : canvasCenterX;
+      const margin = Math.random() > 0.5 ? 0 : pt;
+      const duration = 2000 + Math.random() * 3000;
+      const delay = Math.random() * 1000;
+
+      addLoopAnimation(
+        { x: xStart, y: lastY + margin, width: widthStart, height: h },
+        { x: xEnd, width: widthEnd},
+        duration,
+        delay,
+        EASE.IN_OUT_CUBIC
+      );
+
+      lastY += h + margin;
+    }
+
     animator.start();
   }
 });
 
-function addLoopAnimation(fromOptions: IAnimationProps, toProps: IAnimationProps, duration: number, delay: number, ease: IEasingFunction) {
-  const square = new Square(fromOptions.x, fromOptions.y, fromOptions.width, fromOptions.height, "white");
-  const square2 = new Square(fromOptions.x, fromOptions.y, fromOptions.width, fromOptions.height, "white");
+function addLoopAnimation(fromProps: IAnimationProps, toProps: IAnimationProps, duration: number, delay: number, ease: IEasingFunction, startsFromPercentage: number = 0) {
+  const square = new Square(fromProps.x, fromProps.y, fromProps.width, fromProps.height, "white");
+  let currentProps = toProps;
+  let newFromProps = {} as IAnimationProps;
 
-  const startAnimation = (square: Square, toProps: IAnimationProps, cycleDelay: number = 0) => {
-    animator.addAnimation(
-      new CanvasAnimatorAnimation(
-        square,
-        toProps,
-        duration,
-        cycleDelay,
-        ease,
-        (animation) => {
-          animator.removeAnimation(animation);
-          animator.addAnimation(
-            new CanvasAnimatorAnimation(
-              square,
-              fromOptions,
-              duration,
-              delay,
-              ease,
-              (animation) => {
-                animator.removeAnimation(animation);
-                startAnimation(square, toProps, delay);
-              }
-            )
-          )
-        }
-      )
-    );
+  for(const propKey in toProps) {
+    const key = propKey as keyof IAnimationProps;
+    newFromProps[key] = fromProps[key];
   }
-  startAnimation(square, toProps);
-  startAnimation(square2, {...toProps, x: canvasWidth - toProps.width!});
+
+  fromProps = newFromProps;
+
+  const animation = new CanvasAnimatorAnimation(
+    square,
+    currentProps,
+    duration,
+    0,
+    ease,
+    () => {
+      currentProps = currentProps === toProps ? fromProps : toProps;
+      animation.setTarget(currentProps, delay);
+    },
+  );
+
+  animator.addAnimation(animation);
 }
+
+function weighedRandom(weights: number[]): number {
+  const sum = weights.reduce((acc, weight) => acc + weight, 0);
+  const rand = Math.random() * sum;
+  let acc = 0;
+
+  for(let i = 0; i < weights.length; i++) {
+    acc += weights[i];
+    if (rand < acc) {
+      return i;
+    }
+  }
+
+  return 0;
+}
+
 
 onBeforeUnmount(() => {
   animator?.stop();
@@ -88,5 +131,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <canvas ref="refCanvas" />
+  <canvas ref="refCanvas" :width="canvasWidth" class="bg-gray-900" />
 </template>

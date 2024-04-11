@@ -1,9 +1,9 @@
 import type { CanvasAnimatorAnimation } from "~/shared/lib/CanvasAnimator";
 
 export class CanvasAnimator {
-  private readonly canvas: HTMLCanvasElement;
-  private readonly context: CanvasRenderingContext2D;
-  private animations: CanvasAnimatorAnimation[] = [];
+  protected readonly canvas: HTMLCanvasElement;
+  protected readonly context: CanvasRenderingContext2D;
+  protected animations: CanvasAnimatorAnimation[] = [];
   private animationFrameId: number | null = null;
 
   constructor(canvas: HTMLCanvasElement) {
@@ -47,7 +47,7 @@ export class CanvasAnimator {
     /*this.animations = this.animations.filter(animation => !animation.isComplete);*/
   }
 
-  private draw() {
+  protected draw() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.animations.forEach((animation) => {
       const { x, y, width, height, color } = animation.displayObject;
@@ -58,7 +58,7 @@ export class CanvasAnimator {
 
   private setSize() {
     const rect = this.canvas.getBoundingClientRect();
-    this.canvas.width = rect.width;
+    /*this.canvas.width = rect.width;*/
     this.canvas.height = rect.height;
   }
 }
