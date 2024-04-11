@@ -12,7 +12,7 @@ onMounted(() => {
 <template>
   <section class="relative" :class="{'bg-black': animationIsComplete}">
     <Intro v-if="!animationIsComplete" />
-    <Abstraction v-if="animationIsComplete" class="absolute h-full left-1/2 -translate-x-1/2" />
+    <Abstraction v-if="animationIsComplete" class="absolute h-full right-6 md:left-1/2 md:-translate-x-1/2 md:right-auto" />
     <div class="wrapper h-dvh md:h-auto flex items-center">
       <h1 ref="refH1" class="opacity-0 max-w-[200px] md:max-w-[530px] md:mt-24 text-white animate-index-h1-show">
         Blockchain protocol<br class="md:hidden" /> for digital advertising</h1>

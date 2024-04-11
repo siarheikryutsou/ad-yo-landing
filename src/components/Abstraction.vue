@@ -15,48 +15,15 @@ const sizesWeights = [50, 25, 10, 7, 3];
 
 onMounted(() => {
   if (refCanvas.value) {
-    animator = new AdYoCanvasAnimator(refCanvas.value, canvasWidth);
-
-    /*addLoopAnimation(
-      { x: canvasCenterX, y: 0, width: 30, height: 70 },
-      { x: 0 },
-      3000,
-      1000,
-      EASE.IN_OUT_CUBIC,
-      50
-    );
-
-    addLoopAnimation(
-      { x: 0, y: 80, width: 30, height: 4 },
-      { width: 15, x: canvasCenterX },
-      3000,
-      1000,
-      EASE.IN_OUT_CUBIC
-    );
-
-    addLoopAnimation(
-      { x: 15, y: 84, width: 30, height: 4 },
-      { width: 30, x: canvasCenterX },
-      3500,
-      1000,
-      EASE.IN_OUT_CUBIC
-    );
-
-    addLoopAnimation(
-      { x: canvasCenterX, y: 92, width: 0, height: 4 },
-      { width: 35, x: 0 },
-      4500,
-      1200,
-      EASE.IN_OUT_CUBIC
-    );*/
-
     let lastY = 0;
     const pt = 4;
     const sizes = [pt, pt*2, pt*5, pt*12, pt*18];
     const minWidth = pt*3;
     const maxWidth = Math.round(canvasCenterX);
 
-    for(let i = 0; i < 100; i++) {
+    animator = new AdYoCanvasAnimator(refCanvas.value, canvasWidth, pt);
+
+    while(lastY < refCanvas.value?.height) {
       const xStart = Math.random() > 0.5 ? canvasCenterX : Math.random() * canvasCenterX;
       const widthStart = minWidth + (Math.random() * (maxWidth - minWidth));
       const h = sizes[weighedRandom(sizesWeights)];
@@ -67,7 +34,7 @@ onMounted(() => {
       const delay = Math.random() * 1000;
 
       addLoopAnimation(
-        { x: xStart, y: lastY + margin, width: widthStart, height: h },
+        { x: xStart, y: lastY, width: widthStart, height: h },
         { x: xEnd, width: widthEnd},
         duration,
         delay,
@@ -131,5 +98,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <canvas ref="refCanvas" :width="canvasWidth" class="bg-gray-900" />
+  <canvas ref="refCanvas" :width="canvasWidth" />
 </template>
