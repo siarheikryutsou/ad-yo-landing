@@ -52,5 +52,4 @@ export class AdYoCanvasAnimator extends CanvasAnimator {
     );
     this.context.restore();
   }
-
 }

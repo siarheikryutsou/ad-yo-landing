@@ -12,4 +12,12 @@ export class DisplayObject {
     this.width = width;
     this.height = height;
   }
+
+  public get bottom(): number {
+    return this.y + this.height;
+  }
+
+  public get right(): number {
+    return this.x + this.width;
+  }
 }
