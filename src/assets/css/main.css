@@ -3,7 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+    .bg-cup {
+        background: url("/images/bg_cup.webp") no-repeat center / cover;
+    }
 
+    .bg-bag {
+        background: url("/images/bg_bag.webp") no-repeat center / cover;
+    }
+
+    .bg-preserves {
+        background: url("/images/bg_preserves.gif") no-repeat center / cover;
+    }
 }
 
 @layer utilities {
@@ -51,7 +61,7 @@
             padding: 0;
         }
     }
-    
+
     @keyframes kf-shades-show {
         from {
             height: 0;
@@ -122,13 +132,21 @@ html {
     @apply w-full h-full;
 
     body {
-        @apply w-full h-full text-3xl font-medium;
+        @apply w-full h-full text-base font-medium;
 
         #__nuxt {
             @apply min-h-full flex flex-col;
 
-            h1 {
+            h1, .h1 {
                 @apply text-3xl md:text-5xl font-semibold leading-normal md:leading-normal;
+            }
+
+            h2 {
+                @apply text-2xl font-medium;
+            }
+
+            h3 {
+                @apply font-bold;
             }
 
             section {
@@ -148,6 +166,10 @@ html {
                     margin-bottom: initial;
                     vertical-align: initial;
                 }
+            }
+
+            .info-block {
+                @apply space-y-8;
             }
         }
     }

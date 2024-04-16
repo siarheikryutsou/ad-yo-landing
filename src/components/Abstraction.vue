@@ -88,6 +88,7 @@ function weighedRandom(weights: number[]): number {
 
 function addAnimations() {
   if(!animator) return;
+  console.log("addAnimations");
   const animations = animator.getAnimations();
 
   const lastAnimation = animations.reduce((max, current) => {
@@ -110,15 +111,16 @@ function removeAnimations() {
 }
 
 function onResize(event?: Event): void {
+  console.log("onResize", window.innerHeight);
   if (refCanvas.value) {
     const canvas = refCanvas.value;
     canvas.width = 150;
     if(window.innerHeight > canvas.height) {
+      canvas.height = window.innerHeight;
       addAnimations();
-      canvas.height = window.innerHeight;
     } else if(window.innerHeight < canvas.height) {
-      removeAnimations();
       canvas.height = window.innerHeight;
+      removeAnimations();
     }
   }
 }
