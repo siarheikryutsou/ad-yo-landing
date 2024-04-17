@@ -144,7 +144,7 @@ onMounted(() => {
     </div>
   </section>
 
-  <section>
+  <section class="bg-[#EAEAEA]">
     <h2 class="h1 max-w-1/2">Scalable open-source protocol</h2>
     <div class="flex [&>*]:flex-1">
       <div>
@@ -173,9 +173,12 @@ onMounted(() => {
     </div>
   </section>
 
-  <section>
-    <div class="wrapper">
-      <h2>A new paradigm in digital advertising</h2>
+  <section class="flex flex-col">
+    <div class="flex-grow flex items-center justify-center relative">
+      <Autro />
+      <div class="wrapper z-10">
+        <h2>A new paradigm in digital advertising</h2>
+      </div>
     </div>
   </section>
 

@@ -18,7 +18,7 @@ export default defineNuxtConfig({
 
   modules: [["@nuxtjs/google-fonts", {
     families: {
-      Montserrat: [500, 600],
+      Montserrat: [300, 500, 600, 700],
       download: true,
       inject: true
     }

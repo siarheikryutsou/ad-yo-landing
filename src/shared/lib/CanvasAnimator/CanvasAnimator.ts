@@ -1,4 +1,5 @@
 import type { CanvasAnimatorAnimation } from "~/shared/lib/CanvasAnimator";
+import { Bitmap } from "~/shared/lib/CanvasAnimator";
 
 export class CanvasAnimator {
   protected readonly canvas: HTMLCanvasElement;
@@ -15,23 +16,32 @@ export class CanvasAnimator {
   }
 
   public start() {
+    console.log("start");
+    if(this.animationFrameId) return;
     this.startTime = performance.now();
-    this.animate();
+    this.animationFrameId = requestAnimationFrame(() => this.animate());
   }
 
   public stop() {
-    if (this.animationFrameId) {
+    console.log("stop");
+    if (this.animationFrameId !== null) {
       cancelAnimationFrame(this.animationFrameId);
       this.animationFrameId = null;
     }
   }
 
   public pause() {
+    console.log("pause");
     this.paused = true;
     this.pauseTime = performance.now();
   }
 
   public resume() {
+    console.log("resume");
+    if(this.animationFrameId === null && !this.paused) {
+      this.start();
+      return;
+    }
     this.paused = false;
     this.startTime += performance.now() - this.pauseTime;
     this.animate();
@@ -43,9 +53,14 @@ export class CanvasAnimator {
 
   }
 
+  public addAnimations(...animations: CanvasAnimatorAnimation[]): void {
+    this.animations.push(...animations);
+  }
+
   public addAnimation(animation: CanvasAnimatorAnimation): void {
     this.animations.push(animation);
   }
+
 
   public removeAnimation(animation: CanvasAnimatorAnimation): void {
     this.animations = this.animations.filter(el => el !== animation);
@@ -60,13 +75,14 @@ export class CanvasAnimator {
   }
 
   private animate() {
-    if(this.paused) return;
+    console.log("animate");
+    if(this.paused || this.animationFrameId === null) return;
     const currentTime = performance.now();
     const elapsedTime = currentTime - this.startTime;
     this.update(elapsedTime);
     this.draw();
 
-    if (this.animations.length > 0) {
+    if (this.animations.length > 0 && this.animationFrameId !== null) {
       this.animationFrameId = requestAnimationFrame(() => this.animate());
     }
   }
@@ -80,7 +96,11 @@ export class CanvasAnimator {
     this.animations.forEach((animation) => {
       const { x, y, width, height, color } = animation.displayObject;
       this.context.fillStyle = color;
-      this.context.fillRect(x, y, width, height);
+      if (animation.displayObject instanceof Bitmap) {
+        this.context.drawImage(animation.displayObject.image, x, y, width, height);
+      } else {
+        this.context.fillRect(x, y, width, height);
+      }
     });
   }
 
