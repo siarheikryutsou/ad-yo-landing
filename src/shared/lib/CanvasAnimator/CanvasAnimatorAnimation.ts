@@ -33,11 +33,13 @@ export class CanvasAnimatorAnimation {
     this.setFrom(to);
   }
 
-  public setTarget(to: IAnimationProps, delay: number = 0): void {
+  public setTarget(to: IAnimationProps, delay?: number): void {
     this.to = to;
     this.setFrom(to);
     this.startTime = null;
-    this.delay = delay;
+    if(delay !== undefined) {
+      this.delay = delay;
+    }
     this.completed = false;
   }
 
