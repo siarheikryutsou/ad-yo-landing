@@ -45,7 +45,7 @@ onMounted(() => {
     </div>
   </section>
 
-  <section>
+  <section class="wrapper">
     <h2 class="max-w-[380px] mx-auto">The transaction for viewed ads<br /> is conducted between customers and
       advertisers
       without third parties</h2>
@@ -55,17 +55,17 @@ onMounted(() => {
     </div>
   </section>
 
-  <section class="bg-cup flex">
+  <section class="bg-cup flex wrapper">
     <div class="flex flex-col grow">
-      <div class="flex justify-between h-full grow">
-        <div class="info-block max-w-[270px]">
+      <div class="flex justify-between h-full grow [&>.info-block]:max-w-[300px]">
+        <div class="info-block">
           <h3>Advertiser</h3>
           <p>Ad–Yo allows customers to sell access to their blockchain-encrypted personal data and receive payments for
             ad
             views and other actions taken.</p>
         </div>
 
-        <div class="info-block max-w-[270px] flex flex-col justify-end flex-grow">
+        <div class="info-block flex flex-col justify-end flex-grow">
           <h3>Customer</h3>
           <p>Ad–Yo allows customers to sell access to their blockchain-encrypted personal data and receive payments for
             ad
@@ -76,20 +76,20 @@ onMounted(() => {
 
   </section>
 
-  <section>
-    <h2 class="h1">Identity that matters</h2>
-    <div class="flex gap-12">
-      <div class="flex flex-col justify-between">
+  <section class="wrapper flex flex-col h-full">
+    <h2 class="h1 mb-20">Identity that matters</h2>
+    <div class="flex gap-12 grow [&>.copy]:max-w-[300px]">
+      <div class="flex flex-col justify-between copy">
         <p>Every individual has a set of values and interests that come together in a unique way</p>
         <p>For every Ad-Yo customer, a dynamic NFT artwork is created using generative technologies, based on the
           personal data provided by the customer</p>
       </div>
 
-      <div>
+      <div class="flex items-center">
         <img src="/images/index_pic_3.webp" loading="lazy" alt="Illustration">
       </div>
 
-      <div class="flex flex-col">
+      <div class="flex flex-col copy">
         <p>The NFT reflects the evolution of the profile, which develops alongside the customer's interactions with
           advertisers and purchasing choices</p>
       </div>
@@ -99,7 +99,7 @@ onMounted(() => {
   <section class="bg-bag">
     <h2 class="!text-[8.05vw] text-center mt-32">My data — my property</h2>
     <div class="flex">
-      
+
     </div>
   </section>
 
