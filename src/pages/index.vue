@@ -2,6 +2,11 @@
 const refH1 = ref<HTMLElement>();
 const animationIsComplete = ref(false);
 
+useSeoMeta({
+  title: "Blockchain protocol for digital advertising | Ad-Yo",
+  description: "Scalable open-source platform based on blockchain, where customers can trade their accurate and depersonalized data and get rewards from viewing digital ads.",
+});
+
 onMounted(() => {
   refH1.value?.addEventListener("animationend", () => {
     animationIsComplete.value = true;
@@ -16,7 +21,7 @@ onMounted(() => {
                  class="absolute h-full right-6 md:left-1/2 md:-translate-x-1/2 md:right-auto" />
     <div class="wrapper h-dvh md:h-auto flex items-center">
       <h1 ref="refH1" class="opacity-0 max-w-[200px] md:max-w-[530px] md:mt-24 text-white animate-index-h1-show">
-        Blockchain protocol<br class="md:hidden" /> for digital advertising</h1>
+        Blockchain protocol<br class="md:hidden" /> for depersonalized data trading</h1>
     </div>
   </section>
 

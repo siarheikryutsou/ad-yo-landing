@@ -1,11 +1,15 @@
 <script setup lang="ts">
-
+useSeoMeta({
+  title: "Ad-Yo's Infrastructure: App and Ad Manager | Ad-Yo",
+  description: "Ad-Yo allows users to sell access to blockchain-encrypted personal data and receive payments for ad views and other actions taken.",
+});
 </script>
 
 <template>
   <section>
     <div>
-      <h1>Infrastructure</h1>
+      <h1>Ad-Yo App and Ad Manager</h1>
+      <h2>Infrastructure</h2>
       <p>Ad–Yo allows customers to sell access to their blockchain-encrypted personal data and receive payments for ad
         views and other actions taken</p>
     </div>

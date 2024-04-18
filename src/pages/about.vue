@@ -1,4 +1,10 @@
 <script setup lang="ts">
+
+useSeoMeta({
+  title: "Scalable open-source platform based on blockchain | Ad-Yo",
+  description: "Learn about Ad-Yo blockchain protocol, ADYO token, meet the team and discover Ad-Yo's strategic roadmap.",
+});
+
 const roadmapContent = [
   { title: "Roadmap",
     year: "2023",
@@ -72,6 +78,7 @@ const team = [
 
 <template>
   <section>
+    <h1>Digital advertising using blockchain technology</h1>
     <p>The idea of Ad-Yo originated in 2021 and the development started in 2022.</p>
     <p>The company is headquartered in Paris, France, and the entire team consists of 8 people.</p>
   </section>
