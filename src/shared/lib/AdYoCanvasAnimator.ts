@@ -6,6 +6,7 @@ export class AdYoCanvasAnimator extends CanvasAnimator {
   private readonly canvasCenterX: number;
   private lastMovedTopEl: DisplayObject | undefined;
   private readonly pt: number;
+
   constructor(canvas: HTMLCanvasElement, canvasWidth: number, pt:number) {
     super(canvas);
     this.canvasWidth = canvasWidth;

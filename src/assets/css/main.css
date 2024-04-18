@@ -12,7 +12,7 @@
     }
 
     .bg-preserves {
-        background: url("/images/bg_preserves.gif") no-repeat center / cover;
+        background: url("/images/preserves/1.webp") no-repeat center / cover;
     }
 }
 
@@ -128,7 +128,7 @@
 }
 
 html {
-    font-family: Monserrat, sans-serif;
+    font-family: Montserrat, sans-serif;
     @apply w-full h-full;
 
     body {

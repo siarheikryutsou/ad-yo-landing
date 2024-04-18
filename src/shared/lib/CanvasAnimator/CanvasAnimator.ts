@@ -75,7 +75,7 @@ export class CanvasAnimator {
   }
 
   private animate() {
-    console.log("animate");
+    //console.log("animate");
     if(this.paused || this.animationFrameId === null) return;
     const currentTime = performance.now();
     const elapsedTime = currentTime - this.startTime;

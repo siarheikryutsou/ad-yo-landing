@@ -111,7 +111,6 @@ function removeAnimations() {
 }
 
 function onResize(event?: Event): void {
-  console.log("onResize", window.innerHeight);
   if (refCanvas.value) {
     const canvas = refCanvas.value;
     canvas.width = 150;

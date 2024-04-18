@@ -97,12 +97,33 @@ onMounted(() => {
   </section>
 
   <section class="bg-bag">
-
+    <h2 class="!text-[8.05vw] text-center mt-32">My data — my property</h2>
+    <div class="flex">
+      
+    </div>
   </section>
 
-  <section class="bg-preserves">
+  <Preserves>
+    <div class="wrapper flex justify-between [&>*]:space-y-16 [&>*]:max-w-[200px]">
+      <div>
+        <h2>A transparent decentralized economy</h2>
+        <p>The advertiser purchases ad impressions by verified customer. Blockchain provides transparency of
+          transactions and ad views</p>
+        <p>Reliable information about the number of ads viewed is stored in a decentralized database on the blockchain
+          and can be easily accessed</p>
+      </div>
 
-  </section>
+      <div class="flex flex-col justify-center">
+        <p>The advertiser gets the opportunity to set up advertising campaigns, effectively focusing them on the right
+          audience</p>
+        <p>Effective audience targeting based on accurate personal data provided by the customer</p>
+      </div>
+    </div>
+
+    <div>
+
+    </div>
+  </Preserves>
 
   <section class="flex">
     <div class="flex flex-col grow">
@@ -144,10 +165,9 @@ onMounted(() => {
     </div>
   </section>
 
-  <section class="bg-[#EAEAEA]">
-    <h2 class="h1 max-w-1/2">Scalable open-source protocol</h2>
-    <div class="flex [&>*]:flex-1">
-      <div>
+  <section class="bg-[#EAEAEA] wrapper">
+    <h2 class="h1 max-w-[600px] mb-20">Scalable open-source protocol</h2>
+    <div class="flex [&>*]:flex-1 [&>.info-block]:max-w-[300px]">
         <div class="info-block">
           <h3>Media platforms, social networks, instant messengers, games </h3>
           <p>Affiliate network / referral program. Increasing the loyalty of the target audience, attracting a new
@@ -157,10 +177,11 @@ onMounted(() => {
             to grow at a compound annual growth rate (CAGR) of 15.5% from 2023 to 2030, reaching an estimated $1,154.43
             billion by the end of the forecast period (GrandViewResearch)</p>
         </div>
-      </div>
+
       <div class="max-w-[600px] flex-grow">
         <img src="/images/index_pic_4.webp" loading="lazy" alt="Illustration">
       </div>
+
       <div class="info-block">
         <h3>Thanks to open-source solutions, the technology can be integrated into the global trade and media
           industries</h3>
