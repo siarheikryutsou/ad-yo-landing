@@ -213,5 +213,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <canvas ref="refCanvas" class="absolute inset-0 w-full h-full bg-neutral-400" width="100%" height="100%" />
+  <canvas ref="refCanvas" class="absolute inset-0 w-full h-full" width="100%" height="100%" />
 </template>

@@ -165,27 +165,23 @@ onMounted(() => {
     </div>
   </section>
 
-  <section class="bg-[#EAEAEA] wrapper">
-    <h2 class="h1 max-w-[600px] mb-20">Scalable open-source protocol</h2>
-    <div class="flex [&>*]:flex-1 [&>.info-block]:max-w-[300px]">
-        <div class="info-block">
-          <h3>Media platforms, social networks, instant messengers, games </h3>
-          <p>Affiliate network / referral program. Increasing the loyalty of the target audience, attracting a new
-            audience
-          </p>
-          <p>The global digital advertising market was valued at approximately $420.64 billion in 2023. It is expected
-            to grow at a compound annual growth rate (CAGR) of 15.5% from 2023 to 2030, reaching an estimated $1,154.43
-            billion by the end of the forecast period (GrandViewResearch)</p>
-        </div>
-
-      <div class="max-w-[600px] flex-grow">
-        <img src="/images/index_pic_4.webp" loading="lazy" alt="Illustration">
+  <section class="bg-[#EAEAEA] wrapper bg-artichoke">
+    <h2 class="h1 w-1/2 mb-20">Scalable open-source protocol</h2>
+    <div class="flex justify-between [&>*]:flex-1 [&>.info-block]:max-w-[300px]">
+      <div class="info-block">
+        <h3>Media platforms, social networks, instant messengers, games </h3>
+        <p>Affiliate network / referral program. Increasing the loyalty of the target audience, attracting a new
+          audience
+        </p>
+        <p>The global digital advertising market was valued at approximately $420.64 billion in 2023. It is expected
+          to grow at a compound annual growth rate (CAGR) of 15.5% from 2023 to 2030, reaching an estimated $1,154.43
+          billion by the end of the forecast period (GrandViewResearch)</p>
       </div>
 
       <div class="info-block">
         <h3>Thanks to open-source solutions, the technology can be integrated into the global trade and media
           industries</h3>
-        <h4>E-commerce</h4>
+        <h4 class="h3">E-commerce</h4>
         <p>Viewing ads and buying goods from the real sector within a single system</p>
         <p>The e-commerce market is estimated to reach a valuation of approximately $8.80 trillion in 2024 and is
           expected to grow to $18.81 trillion by 2029, with a compound annual growth rate (CAGR) of 15.80% during the
