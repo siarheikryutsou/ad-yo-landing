@@ -104,8 +104,8 @@ onMounted(() => {
   </section>
 
   <Preserves>
-    <div class="wrapper flex justify-between [&>*]:space-y-16 [&>*]:max-w-[200px]">
-      <div>
+    <div class="wrapper flex justify-between [&>*]:space-y-16 [&>*]:max-w-[200px] grow">
+      <div class="flex flex-col justify-center">
         <h2>A transparent decentralized economy</h2>
         <p>The advertiser purchases ad impressions by verified customer. Blockchain provides transparency of
           transactions and ad views</p>
@@ -125,7 +125,7 @@ onMounted(() => {
     </div>
   </Preserves>
 
-  <section class="flex">
+  <section class="flex wrapper">
     <div class="flex flex-col grow">
       <div class="flex justify-between h-full grow [&>*]:flex-1 [&>*]:max-w-[300px]">
         <div class="flex flex-col justify-end flex-grow">

@@ -150,7 +150,7 @@ html {
             }
 
             section {
-                @apply w-full min-h-screen;
+                @apply w-full min-h-screen overflow-hidden;
             }
 
             .wrapper {
