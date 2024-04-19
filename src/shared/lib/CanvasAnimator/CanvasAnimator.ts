@@ -24,8 +24,8 @@ export class CanvasAnimator {
 
   public stop() {
     console.log("stop");
-    if (this.animationFrameId !== null) {
-      cancelAnimationFrame(this.animationFrameId);
+    if (this.isStarted()) {
+      cancelAnimationFrame(this.animationFrameId!);
       this.animationFrameId = null;
     }
   }
@@ -70,6 +70,10 @@ export class CanvasAnimator {
     return this.animations;
   }
 
+  public isStarted(): boolean {
+    return this.animationFrameId !== null;
+  }
+
   public removeCompletedAnimations() {
     this.animations = this.animations.filter(animation => !animation.isComplete);
   }
@@ -82,7 +86,7 @@ export class CanvasAnimator {
     this.update(elapsedTime);
     this.draw();
 
-    if (this.animations.length > 0 && this.animationFrameId !== null) {
+    if (this.animations.length > 0 && this.isStarted()) {
       this.animationFrameId = requestAnimationFrame(() => this.animate());
     }
   }

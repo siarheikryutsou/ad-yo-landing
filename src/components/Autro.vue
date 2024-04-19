@@ -6,6 +6,7 @@ const MARGIN_BOTTOM = 40;
 const MARGIN_X = 40;
 const AD_MARGIN_BOTTOM = 5;
 let animator: CanvasAnimator;
+let observer: IntersectionObserver;
 const GAP = 4;
 const DURATION = 4000;
 const squareWidths = [0, 26.8, 25.3, 12.2, 3.1, 2.4, 2.6, 3.2, 2.5, 2.5, 1.6, 1.1, 1.1, 1.8, 1.1, 1.1, 1.1, 1.1, 1.1, 8.3, 0];
@@ -160,7 +161,22 @@ onMounted(async () => {
 
     });*/
 
-    animator.start();
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animator.start();
+          observer.disconnect();
+        } else {
+          animator.stop();
+        }
+      });
+    }, {
+      threshold: 0.9
+    });
+
+    observer.observe(canvas);
+
+    //animator.start();
   }
 });
 
@@ -208,6 +224,7 @@ function setTargets(): void {
 onBeforeUnmount(() => {
   animator?.stop();
   window.removeEventListener("resize", onResize);
+  observer?.disconnect();
 });
 
 </script>

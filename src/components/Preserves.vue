@@ -6,6 +6,7 @@ const refSection = ref<HTMLElement>();
 const TOTAL_FRAMES = 153;
 const frames = [1, 4, 7, 10, 13, 28, 31, 34, 37, 55, 58, 76, 79, 82, 85, 91];
 let animationId: number | null = null;
+let observer: IntersectionObserver;
 const timeline: number[] = new Array(TOTAL_FRAMES);
 const FPS = 30;
 const INTERVAL = 1000 / FPS;
@@ -40,16 +41,15 @@ timeline[117] = timeline[147] = 34;
 timeline[120] = timeline[150] = 37;
 
 function startAnimation(images: HTMLImageElement[]) {
-  console.log("startAnimation");
+  console.log("Preserves startAnimation");
   const section = refSection.value;
   if (section) {
     let frameIndex = 0;
     let frame: number;
     let lastTime = 0;
     const animate = (time: number) => {
-      console.log(time);
       if(!lastTime || (time - lastTime) >= INTERVAL) {
-        console.log("draw");
+        //console.log("draw");
         lastTime = time;
         frame = timeline[frameIndex] || frame;
         const image = images[frames.indexOf(frame)];
@@ -68,6 +68,7 @@ function startAnimation(images: HTMLImageElement[]) {
 }
 
 function stopAnimation() {
+  console.log("Preserves stopAnimation");
   if (animationId !== null) {
     cancelAnimationFrame(animationId);
     animationId = null;
@@ -76,12 +77,28 @@ function stopAnimation() {
 
 onMounted(async () => {
   console.log("Preserves mounted");
+  if(!refSection.value) return;
+
   const images = await loadImages(frames.map(frame => `/images/preserves/${frame}.webp`));
-  startAnimation(images);
+
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startAnimation(images);
+      } else {
+        stopAnimation();
+      }
+    });
+  });
+
+  observer.observe(refSection.value);
+
+  //startAnimation(images);
 });
 
 onBeforeUnmount(() => {
   stopAnimation();
+  observer?.disconnect();
 })
 
 

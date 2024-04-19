@@ -37,7 +37,9 @@ onMounted(() => {
           <img src="/images/index_pic_2_inside.svg" class="absolute top-[56%] left-[35%]" loading="lazy"
                alt="Illustration">
         </div>
-        <img src="/images/index_pic_2_bl.svg" class="absolute -bottom-[106px] -left-[30%]" loading="lazy"
+        <img src="/images/index_pic_2_bl.svg" class="absolute -bottom-[53px] -left-[89px]" loading="lazy"
+             alt="Illustration">
+        <img src="/images/index_pic_2_br.svg" class="absolute -bottom-[39px] right-[24px]" loading="lazy"
              alt="Illustration">
       </div>
 
@@ -51,17 +53,30 @@ onMounted(() => {
   </section>
 
   <section class="wrapper">
-    <h2 class="max-w-[380px] mx-auto">The transaction for viewed ads<br /> is conducted between customers and
+    <h2 class="max-w-[380px] mx-auto mb-12">The transaction for viewed ads<br /> is conducted between customers and
       advertisers
       without third parties</h2>
-    <div class="flex justify-between w-3/4 mx-auto">
-      <p class="max-w-[110px]">All views are authentic</p>
-      <p class="max-w-[120px]">All rewards for ad views go to customers</p>
+    <div class="w-3/4 mx-auto [&>*]:flex [&>*]:justify-between">
+      <div>
+        <nuxt-icon name="man" filled />
+        <nuxt-icon name="man" filled />
+      </div>
+
+      <div class="items-center gap-1 mt-6 mb-12">
+        <nuxt-icon name="intro_ad" filled />
+        <div class="w-full h-[5px] bg-black mt-2"></div>
+        <nuxt-icon name="intro_yo" class="pt-[10px]" filled />
+      </div>
+
+      <div class="[&>*]:max-w-[130px]">
+        <p>All views are authentic</p>
+        <p>All rewards for ad views go to customers</p>
+      </div>
     </div>
   </section>
 
   <section class="bg-cup flex wrapper">
-    <div class="flex flex-col grow">
+    <div class="flex flex-col grow relative">
       <div class="flex justify-between h-full grow [&>.info-block]:max-w-[300px]">
         <div class="info-block">
           <h3>Advertiser</h3>
@@ -77,6 +92,7 @@ onMounted(() => {
             views and other actions taken.</p>
         </div>
       </div>
+      <ElasticLogo class="absolute top-1/2 w-full -translate-y-1/2" />
     </div>
 
   </section>
@@ -101,10 +117,16 @@ onMounted(() => {
     </div>
   </section>
 
-  <section class="bg-bag">
+  <section class="bg-bag flex flex-col">
     <h2 class="!text-[8.05vw] text-center mt-32">My data — my property</h2>
-    <div class="flex">
-
+    <div class="flex justify-between items-center [&>.info-block]:max-w-[300px] wrapper grow">
+      <div class="info-block">
+        <p>The customer creates a profile with accurate personal data that verified, hashed and stored in the Ad-Yo blockchain </p>
+        <p>Encrypted snapshots of the customer's depersonalized data are stored on the Ad–Yo blockchain</p>
+      </div>
+      <div class="info-block">
+        <p>The customer's personal data is stored securely and exclusively on their mobile device, and only they have access to it</p>
+      </div>
     </div>
   </section>
 

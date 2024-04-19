@@ -17,6 +17,7 @@ const pt = 4;
 const sizes = [pt, pt*2, pt*5, pt*12, pt*18];
 const minWidth = pt*3;
 const maxWidth = Math.round(canvasCenterX);
+let observer: IntersectionObserver;
 
 function fillCanvas() {
   const canvas = refCanvas.value;
@@ -130,13 +131,25 @@ onMounted(() => {
     onResize();
     animator = new AdYoCanvasAnimator(refCanvas.value, canvasWidth, pt);
     fillCanvas();
-    animator.start();
+
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          animator.isStarted() ? animator.resume() : animator.start();
+        } else {
+          animator.isStarted() && animator.pause();
+        }
+      });
+    });
+
+    observer.observe(refCanvas.value);
   }
 });
 
 onBeforeUnmount(() => {
   animator?.stop();
   window.removeEventListener("resize", onResize);
+  observer?.disconnect();
 });
 
 </script>
