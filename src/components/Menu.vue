@@ -71,7 +71,7 @@ watch(showMenu, () => {
 </script>
 
 <template>
-  <nav class="relative" ref="refMenu">
+  <nav class="absolute w-full top-0 md:relative md:w-auto" ref="refMenu">
     <div class="flex justify-end">
       <button class="flex-auto flex-shrink flex-grow-0 text-white font-semibold text-lg bg-black px-10 py-1.5 group"
               @click="showMenu = !showMenu">
@@ -79,10 +79,10 @@ watch(showMenu, () => {
       </button>
     </div>
 
-    <div v-show="showMenu" class="absolute right-[35px]">
-      <ul v-for="(menuRow, index) in menuItems" :key="index" class="flex justify-end -mt-px">
+    <div v-show="showMenu" class="absolute wrapper !py-0 md:!p-0 w-full md:w-auto md:right-[35px]">
+      <ul v-for="(menuRow, index) in menuItems" :key="index" class="relative flex flex-col items-end md:flex-row md:justify-end -mt-px">
         <li v-for="menuItem in menuRow"
-            class="-mr-px"
+            class="-mb-px last:mb-0 md:last:-mb-px md:-mr-px md:mt-0 after:content-[''] after:w-full after:absolute after:border after:border-b-black after:bottom-0 after:left-0 md:after:content-none"
             :key="menuItem.name"
         >
           <nuxt-link :to="menuItem.path"
