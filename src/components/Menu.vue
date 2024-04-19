@@ -71,7 +71,7 @@ watch(showMenu, () => {
 </script>
 
 <template>
-  <nav class="absolute w-full top-0 md:relative md:w-auto" ref="refMenu">
+  <nav class="absolute w-full top-0 md:relative md:w-auto h-screen md:h-auto bg-white bg-opacity-95 md:bg-transparent" ref="refMenu">
     <div class="flex justify-end">
       <button class="flex-auto flex-shrink flex-grow-0 text-white font-semibold text-lg bg-black px-10 py-1.5 group"
               @click="showMenu = !showMenu">
