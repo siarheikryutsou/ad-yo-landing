@@ -18,32 +18,32 @@ onMounted(() => {
   <section class="relative" :class="{'bg-black': animationIsComplete}">
     <Intro v-if="!animationIsComplete" />
     <Abstraction v-if="animationIsComplete"
-                 class="absolute h-full right-6 md:left-1/2 md:-translate-x-1/2 md:right-auto" />
-    <div class="wrapper h-dvh md:h-auto flex items-center">
-      <h1 ref="refH1" class="opacity-0 max-w-[200px] md:max-w-[530px] md:mt-24 text-white animate-index-h1-show">
+                 class="absolute h-full right-6 xl:left-1/2 md:-translate-x-1/2 md:right-auto md:left-3/4" />
+    <div class="wrapper h-dvh lg:h-auto flex items-center">
+      <h1 ref="refH1" class="opacity-0 z-10 max-w-[200px] md:max-w-[490px] lg:max-w-[530px] lg:mt-24 text-white animate-index-h1-show">
         Blockchain protocol<br class="md:hidden" /> for depersonalized data trading</h1>
     </div>
   </section>
 
-  <section class="bg-[#EAEAEA] px-24 py-40 flex flex-col justify-center">
-    <div class="flex justify-between gap-12">
-      <h2>Ad–Yo — is a scalable open-source platform based on blockchain and peer-to-peer
+  <section class="bg-[#EAEAEA] p-0 md:px-24 md:py-40 flex flex-col md:justify-center">
+    <div class="flex flex-col md:flex-row justify-between md:gap-12 grow">
+      <h2 class="mob-p md:p-0">Ad–Yo — is a scalable open-source platform based on blockchain and peer-to-peer
         networking technologies</h2>
 
-      <div class="relative w-2/5 flex-shrink-0">
-        <img src="/images/index_pic_2_tc.svg" class="absolute -top-[96px] left-[29%]" loading="lazy" alt="Illustration">
+      <div class="relative md:w-2/5 md:flex-shrink-0">
+        <img src="/images/index_pic_2_tc.svg" class="absolute -top-[96px] left-[29%] hidden md:block" loading="lazy" alt="Illustration">
         <div class="relative">
           <img src="/images/index_pic_2.webp" loading="lazy" alt="Illustration">
-          <img src="/images/index_pic_2_inside.svg" class="absolute top-[56%] left-[35%]" loading="lazy"
+          <img src="/images/index_pic_2_inside.svg" class="absolute top-[56%] left-[35%] hidden md:block" loading="lazy"
                alt="Illustration">
         </div>
-        <img src="/images/index_pic_2_bl.svg" class="absolute -bottom-[53px] -left-[89px]" loading="lazy"
+        <img src="/images/index_pic_2_bl.svg" class="absolute -bottom-[53px] -left-[89px] hidden md:block" loading="lazy"
              alt="Illustration">
-        <img src="/images/index_pic_2_br.svg" class="absolute -bottom-[39px] right-[24px]" loading="lazy"
+        <img src="/images/index_pic_2_br.svg" class="absolute -bottom-[39px] right-[24px] hidden md:block" loading="lazy"
              alt="Illustration">
       </div>
 
-      <div class="flex flex-col justify-end info-block">
+      <div class="flex flex-col justify-end info-block mob-p">
         <h3 class="font-bold">Our mission is to change the way advertisers and customers interact. </h3>
         <p>Customers can trade their accurate and depersonalized data to advertisers in the global digital market and
           earn
@@ -52,7 +52,7 @@ onMounted(() => {
     </div>
   </section>
 
-  <section class="wrapper">
+  <section class="wrapper flex flex-col justify-center">
     <h2 class="max-w-[380px] mx-auto mb-12">The transaction for viewed ads<br /> is conducted between customers and
       advertisers
       without third parties</h2>
@@ -75,9 +75,10 @@ onMounted(() => {
     </div>
   </section>
 
-  <section class="bg-cup flex wrapper">
+  <section class="bg-cup flex md:wrapper">
     <div class="flex flex-col grow relative">
-      <div class="flex justify-between h-full grow [&>.info-block]:max-w-[300px]">
+      <ElasticLogo part="ad" class="md:hidden mob-p pr-0 !m-0" />
+      <div class="flex justify-between flex-col md:flex-row h-full grow md:[&>.info-block]:max-w-[300px] wrapper min-h-[600px]">
         <div class="info-block">
           <h3>Advertiser</h3>
           <p>Ad–Yo allows customers to sell access to their blockchain-encrypted personal data and receive payments for
@@ -92,7 +93,8 @@ onMounted(() => {
             views and other actions taken.</p>
         </div>
       </div>
-      <ElasticLogo class="absolute top-1/2 w-full -translate-y-1/2" />
+      <ElasticLogo class="absolute top-1/2 w-full -translate-y-1/2 hidden md:flex wrapper" />
+      <ElasticLogo part="yo" class="md:hidden mob-p pl-0 !m-0" />
     </div>
 
   </section>
@@ -153,43 +155,7 @@ onMounted(() => {
   </Preserves>
 
   <section class="flex wrapper">
-    <div class="flex flex-col grow">
-      <div class="flex justify-between h-full grow [&>*]:flex-1 [&>*]:max-w-[300px]">
-        <div class="flex flex-col justify-end flex-grow">
-          <div class="info-block">
-            <h3>Compliance with GDPR data protection law</h3>
-            <p>This law establishes the rights of customers in relation to their personal data, namely: access control,
-              storage, edit and deletion. Ad-Yo fully complies with the law: personal data is stored directly on user
-              devices, and their data encrypted in hashes is stored on the blockchain. The advertiser gets access to
-              this
-              data only with the consent of the customer.</p>
-          </div>
-        </div>
-
-        <div class="info-block">
-          <h3>Rewards for viewing ads</h3>
-          <p>All revenue from ads in the current business model goes to media platforms. The customer themselves acts as
-            a
-            product, receiving nothing but access to the platform itself. With Ad-yo, the customer receives all rewards
-            minus the network commission.</p>
-        </div>
-
-        <div class="flex flex-col justify-between flex-grow">
-          <div class="info-block">
-            <h3>Verifiability</h3>
-            <p>Depersonalized customer data, ad views and transaction information are recorded in the blockchain and can
-              be verified for authenticity.</p>
-          </div>
-
-          <div class="info-block">
-            <h3>Confidentiality</h3>
-            <p>The platform provides advertisers with access to each customer and their interests without revealing the
-              identity of that customer.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
+      <Snake />
   </section>
 
   <section class="bg-[#EAEAEA] wrapper bg-artichoke">
