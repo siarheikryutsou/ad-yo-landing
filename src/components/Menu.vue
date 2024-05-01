@@ -73,9 +73,9 @@ watch(showMenu, () => {
 </script>
 
 <template>
-  <nav class="absolute w-full top-0 md:relative md:w-auto h-screen md:h-auto md:bg-transparent overflow-x-auto md:overflow-visible"
+  <nav class="absolute w-full top-0 md:relative md:w-auto md:h-auto md:bg-transparent overflow-hidden md:overflow-visible"
        ref="refMenu"
-       :class="{'bg-white bg-opacity-95': showMenu}"
+       :class="{'bg-white bg-opacity-95 h-screen': showMenu}"
   >
     <div class="flex justify-end">
       <button class="flex-auto flex-shrink flex-grow-0 text-white font-semibold text-lg bg-black px-10 py-1.5 group"
@@ -84,7 +84,7 @@ watch(showMenu, () => {
       </button>
     </div>
 
-    <div v-show="showMenu" class="absolute wrapper !py-0 md:!p-0 w-full md:w-auto md:right-[35px]">
+    <div v-show="showMenu" class="absolute wrapper !py-0 md:!p-0 w-full md:w-auto md:right-[35px] overflow-auto h-full md:h-auto md:overflow-visible">
       <ul v-for="(menuRow, index) in menuItems" :key="index" class="relative flex flex-col items-end md:flex-row md:justify-end -mt-px">
         <li v-for="menuItem in menuRow"
             class="-mb-px last:mb-0 md:last:-mb-px md:-mr-px md:mt-0 after:content-[''] after:w-full after:absolute after:border after:border-b-black after:bottom-0 after:left-0 md:after:content-none"
