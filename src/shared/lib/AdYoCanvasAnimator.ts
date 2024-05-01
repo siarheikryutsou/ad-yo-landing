@@ -2,8 +2,8 @@ import { CanvasAnimator, DisplayObject } from "~/shared/lib/CanvasAnimator";
 
 export class AdYoCanvasAnimator extends CanvasAnimator {
 
-  private readonly canvasWidth: number;
-  private readonly canvasCenterX: number;
+  private canvasWidth: number;
+  private canvasCenterX: number;
   private lastMovedTopEl: DisplayObject | undefined;
   private readonly pt: number;
 
@@ -52,5 +52,10 @@ export class AdYoCanvasAnimator extends CanvasAnimator {
       this.canvas.height,
     );
     this.context.restore();
+  }
+
+  public setCanvasWidth(width: number) {
+    this.canvasWidth = width;
+    this.canvasCenterX = Math.round(width / 2);
   }
 }

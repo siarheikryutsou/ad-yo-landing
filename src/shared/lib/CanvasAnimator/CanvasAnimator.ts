@@ -61,9 +61,12 @@ export class CanvasAnimator {
     this.animations.push(animation);
   }
 
-
   public removeAnimation(animation: CanvasAnimatorAnimation): void {
     this.animations = this.animations.filter(el => el !== animation);
+  }
+
+  public removeAllAnimations(): void {
+    this.animations = [];
   }
 
   public getAnimations(): CanvasAnimatorAnimation[] {
