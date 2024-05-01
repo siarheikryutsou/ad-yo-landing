@@ -7,12 +7,22 @@
         background: url("/images/bg_cup.webp") no-repeat center / cover;
     }
 
+    .bg-cup-mob {
+        background: url("/images/bg_cup_mob.webp") no-repeat center;
+        background-size: 100% auto;
+    }
+
     .bg-bag {
         background: url("/images/bg_bag.webp") no-repeat center / cover;
     }
 
+    .bg-bag-mob {
+        background: url("/images/bg_bag_mob.webp") no-repeat right top;
+        background-size: auto 100%;
+    }
+
     .bg-preserves {
-        background: url("/images/preserves/1.webp") no-repeat center / cover;
+        background: url("/images/preserves/1.webp") no-repeat center / contain;
     }
 
     .bg-artichoke {
@@ -22,6 +32,18 @@
 
     .mob-p {
         @apply px-6 py-8 md:p-0;
+    }
+
+    h1, .h1 {
+        @apply text-3xl md:text-5xl font-semibold leading-normal md:leading-normal;
+    }
+
+    h2, .h2 {
+        @apply text-xl md:text-2xl font-medium;
+    }
+
+    h3, .h3 {
+        @apply font-bold;
     }
 }
 
@@ -141,22 +163,10 @@ html {
     @apply w-full h-full;
 
     body {
-        @apply w-full h-full text-base font-medium;
+        @apply w-full h-full text-sm md:text-base font-medium;
 
         #__nuxt {
             @apply min-h-full flex flex-col;
-
-            h1, .h1 {
-                @apply text-3xl md:text-5xl font-semibold leading-normal md:leading-normal;
-            }
-
-            h2 {
-                @apply text-2xl font-medium;
-            }
-
-            h3, .h3 {
-                @apply font-bold;
-            }
 
             section {
                 @apply w-full min-h-screen overflow-hidden;

@@ -4,7 +4,7 @@ const animationIsComplete = ref(false);
 
 useSeoMeta({
   title: "Blockchain protocol for digital advertising | Ad-Yo",
-  description: "Scalable open-source platform based on blockchain, where customers can trade their accurate and depersonalized data and get rewards from viewing digital ads.",
+  description: "Scalable open-source platform based on blockchain, where customers can trade their accurate and depersonalized data and get rewards from viewing digital ads."
 });
 
 onMounted(() => {
@@ -20,7 +20,8 @@ onMounted(() => {
     <Abstraction v-if="animationIsComplete"
                  class="absolute h-full right-6 xl:left-1/2 md:-translate-x-1/2 md:right-auto md:left-3/4" />
     <div class="wrapper h-dvh lg:h-auto flex items-center">
-      <h1 ref="refH1" class="opacity-0 z-10 max-w-[200px] md:max-w-[490px] lg:max-w-[530px] lg:mt-24 text-white animate-index-h1-show">
+      <h1 ref="refH1"
+          class="opacity-0 z-10 max-w-[200px] md:max-w-[490px] lg:max-w-[530px] lg:mt-24 text-white animate-index-h1-show">
         Blockchain protocol<br class="md:hidden" /> for depersonalized data trading</h1>
     </div>
   </section>
@@ -31,15 +32,18 @@ onMounted(() => {
         networking technologies</h2>
 
       <div class="relative md:w-2/5 md:flex-shrink-0">
-        <img src="/images/index_pic_2_tc.svg" class="absolute -top-[96px] left-[29%] hidden md:block" loading="lazy" alt="Illustration">
+        <img src="/images/index_pic_2_tc.svg" class="absolute -top-[96px] left-[29%] hidden md:block" loading="lazy"
+             alt="Illustration">
         <div class="relative">
           <img src="/images/index_pic_2.webp" loading="lazy" alt="Illustration">
           <img src="/images/index_pic_2_inside.svg" class="absolute top-[56%] left-[35%] hidden md:block" loading="lazy"
                alt="Illustration">
         </div>
-        <img src="/images/index_pic_2_bl.svg" class="absolute -bottom-[53px] -left-[89px] hidden md:block" loading="lazy"
+        <img src="/images/index_pic_2_bl.svg" class="absolute -bottom-[53px] -left-[89px] hidden md:block"
+             loading="lazy"
              alt="Illustration">
-        <img src="/images/index_pic_2_br.svg" class="absolute -bottom-[39px] right-[24px] hidden md:block" loading="lazy"
+        <img src="/images/index_pic_2_br.svg" class="absolute -bottom-[39px] right-[24px] hidden md:block"
+             loading="lazy"
              alt="Illustration">
       </div>
 
@@ -56,7 +60,7 @@ onMounted(() => {
     <h2 class="max-w-[380px] mx-auto mb-12">The transaction for viewed ads<br /> is conducted between customers and
       advertisers
       without third parties</h2>
-    <div class="w-3/4 mx-auto [&>*]:flex [&>*]:justify-between">
+    <div class="md:w-3/4 w-full mx-auto [&>*]:flex [&>*]:justify-between">
       <div>
         <nuxt-icon name="man" filled />
         <nuxt-icon name="man" filled />
@@ -70,15 +74,16 @@ onMounted(() => {
 
       <div class="[&>*]:max-w-[130px]">
         <p>All views are authentic</p>
-        <p>All rewards for ad views go to customers</p>
+        <p class="text-right">All rewards for ad views go to customers</p>
       </div>
     </div>
   </section>
 
-  <section class="bg-cup flex md:wrapper">
+  <section class="bg-cup-mob md:bg-cup flex md:wrapper">
     <div class="flex flex-col grow relative">
       <ElasticLogo part="ad" class="md:hidden mob-p pr-0 !m-0" />
-      <div class="flex justify-between flex-col md:flex-row h-full grow md:[&>.info-block]:max-w-[300px] wrapper min-h-[600px]">
+      <div
+        class="flex justify-between flex-col md:flex-row h-full grow md:[&>.info-block]:max-w-[300px] wrapper min-h-[600px]">
         <div class="info-block">
           <h3>Advertiser</h3>
           <p>Ad–Yo allows customers to sell access to their blockchain-encrypted personal data and receive payments for
@@ -99,50 +104,67 @@ onMounted(() => {
 
   </section>
 
-  <section class="wrapper flex flex-col h-full">
-    <h2 class="h1 mb-20">Identity that matters</h2>
-    <div class="flex gap-12 grow [&>.copy]:max-w-[300px]">
-      <div class="flex flex-col justify-between copy">
-        <p>Every individual has a set of values and interests that come together in a unique way</p>
-        <p>For every Ad-Yo customer, a dynamic NFT artwork is created using generative technologies, based on the
-          personal data provided by the customer</p>
-      </div>
+  <section class="wrapper flex flex-col justify-center">
+    <div class="xl:grow flex flex-col gap-14">
+      <h2 class="text-[28px] md:h1 xl:mb-20">Identity that matters</h2>
+      <div class="flex flex-col gap-14 xl:flex-row xl:gap-12 grow xl:[&>.copy]:max-w-[300px]">
+        <div class="flex flex-col gap-14 xl:gap-0 justify-between copy">
+          <p>Every individual has a set of values and interests that come together in a unique way</p>
+          <p>For every Ad-Yo customer, a dynamic NFT artwork is created using generative technologies, based on the
+            personal data provided by the customer</p>
+        </div>
 
-      <div class="flex items-center">
-        <img src="/images/index_pic_3.webp" loading="lazy" alt="Illustration">
-      </div>
+        <div class="flex items-center">
+          <img src="/images/index_pic_3.webp" loading="lazy" alt="Illustration">
+        </div>
 
-      <div class="flex flex-col copy">
-        <p>The NFT reflects the evolution of the profile, which develops alongside the customer's interactions with
-          advertisers and purchasing choices</p>
+        <div class="flex flex-col copy">
+          <p>The NFT reflects the evolution of the profile, which develops alongside the customer's interactions with
+            advertisers and purchasing choices</p>
+        </div>
+      </div>
+      <div class="xl:hidden flex justify-end">
+        <img src="/images/identity_decor_curve_1.svg" loading="lazy" alt="Decoration picture" width="52" height="17" />
       </div>
     </div>
   </section>
 
-  <section class="bg-bag flex flex-col">
-    <h2 class="!text-[8.05vw] text-center mt-32">My data — my property</h2>
-    <div class="flex justify-between items-center [&>.info-block]:max-w-[300px] wrapper grow">
+  <section class="xl:bg-bag flex flex-col bg-[#CFCDD2]">
+    <div class="bg-bag-mob xl:bg-none">
+      <div class="w-1/2 wrapper xl:w-full xl:!p-0">
+        <h2 class="font-size-[20px] md:h1 xl:p-0 xl:!text-[8.05vw] xl:text-center xl:mt-32">My data<br
+          class="xl:hidden" /> — <br class="xl:hidden" />my property</h2>
+        <ElementsCopyCreateProfile class="block mt-14 xl:hidden" />
+      </div>
+      <!--      <div class="xl:hidden bg-bag"></div>-->
+    </div>
+
+    <div
+      class="flex justify-center items-start xl:justify-between xl:items-center flex-col xl:flex-row xl:[&>.info-block]:max-w-[300px] wrapper grow">
       <div class="info-block">
-        <p>The customer creates a profile with accurate personal data that verified, hashed and stored in the Ad-Yo blockchain </p>
+        <ElementsCopyCreateProfile class="hidden xl:block" />
         <p>Encrypted snapshots of the customer's depersonalized data are stored on the Ad–Yo blockchain</p>
       </div>
-      <div class="info-block">
-        <p>The customer's personal data is stored securely and exclusively on their mobile device, and only they have access to it</p>
+      <div class="info-block mt-10 xl:mt-0">
+        <p>The customer's personal data is stored securely and exclusively on their mobile device, and only they have
+          access to it</p>
       </div>
     </div>
   </section>
 
   <Preserves>
-    <div class="wrapper flex justify-between [&>*]:space-y-16 [&>*]:max-w-[200px] grow">
+    <div class="wrapper flex flex-col lg:flex-row justify-between lg:[&>*]:space-y-16 lg:[&>*]:max-w-[200px] grow">
       <div class="flex flex-col justify-center">
-        <h2>A transparent decentralized economy</h2>
-        <p>The advertiser purchases ad impressions by verified customer. Blockchain provides transparency of
-          transactions and ad views</p>
-        <p>Reliable information about the number of ads viewed is stored in a decentralized database on the blockchain
-          and can be easily accessed</p>
+        <h2 class="mb-10 lg:mb-0">A transparent decentralized economy</h2>
+        <div class="flex gap-6 lg:block lg:space-y-16">
+          <p>The advertiser purchases ad impressions by verified customer. Blockchain provides transparency of
+            transactions and ad views</p>
+          <p>Reliable information about the number of ads viewed is stored in a decentralized database on the blockchain
+            and can be easily accessed</p>
+        </div>
       </div>
 
-      <div class="flex flex-col justify-center">
+      <div class="flex [&>*]:flex-1 lg:[&>*]:flex-none lg:flex-col justify-center gap-6">
         <p>The advertiser gets the opportunity to set up advertising campaigns, effectively focusing them on the right
           audience</p>
         <p>Effective audience targeting based on accurate personal data provided by the customer</p>
@@ -155,24 +177,30 @@ onMounted(() => {
   </Preserves>
 
   <section class="flex wrapper">
-      <Snake />
+    <Snake />
   </section>
 
-  <section class="bg-[#EAEAEA] wrapper bg-artichoke">
-    <h2 class="h1 w-1/2 mb-20">Scalable open-source protocol</h2>
-    <div class="flex justify-between [&>*]:flex-1 [&>.info-block]:max-w-[300px]">
-      <div class="info-block">
-        <h3>Media platforms, social networks, instant messengers, games </h3>
-        <p>Affiliate network / referral program. Increasing the loyalty of the target audience, attracting a new
-          audience
-        </p>
-        <p>The global digital advertising market was valued at approximately $420.64 billion in 2023. It is expected
-          to grow at a compound annual growth rate (CAGR) of 15.5% from 2023 to 2030, reaching an estimated $1,154.43
-          billion by the end of the forecast period (GrandViewResearch)</p>
+  <section class="bg-[#EAEAEA] wrapper lg:bg-artichoke flex lg:items-center">
+    <div
+      class="flex flex-col justify-between w-full lg:items-center [&>*]:flex-1 lg:[&>.info-block]:max-w-[300px] grow lg:flex-row">
+      <div>
+        <h2 class="h1 mb-14 lg:mb-20">Scalable open-source<br class="hidden lg:block" /> protocol</h2>
+        <div class="info-block lg:max-w-[300px]">
+          <h3>Media platforms, social networks, instant messengers, games </h3>
+          <p>Affiliate network / referral program. Increasing the loyalty of the target audience, attracting a new
+            audience
+          </p>
+          <p>The global digital advertising market was valued at approximately $420.64 billion in 2023. It is expected
+            to grow at a compound annual growth rate (CAGR) of 15.5% from 2023 to 2030, reaching an estimated $1,154.43
+            billion by the end of the forecast period (GrandViewResearch)</p>
+        </div>
       </div>
 
+      <img src="/images/bg_artichoke.webp" class="lg:hidden w-full" width="2398" height="2400" loading="lazy"
+           alt="Illustration">
+
       <div class="info-block">
-        <h3>Thanks to open-source solutions, the technology can be integrated into the global trade and media
+        <h3 class="h2">Thanks to open-source solutions, the technology can be integrated into the global trade and media
           industries</h3>
         <h4 class="h3">E-commerce</h4>
         <p>Viewing ads and buying goods from the real sector within a single system</p>
@@ -193,13 +221,27 @@ onMounted(() => {
   </section>
 
   <footer class="bg-[#EAEAEA] wrapper !py-20">
-    <div class="flex [&>*]:flex-1">
-      <h3>Contact information</h3>
-      <nav class="flex items-center gap-2-">
-        <a href="#">Ad – Yo SAS</a>
-        <div>Email: <a href="mailto:contact@ad-yo.com">contact@ad-yo.com</a>
-        </div>
-      </nav>
+    <div class="flex flex-col items-center gap-6 lg:gap-0 lg:flex-row justify-between [&>*]:flex [&>*]:gap-2">
+      <h3>Ad – Yo GmbH</h3>
+      <div>
+        <h4 class="h3">E-Mail:</h4>
+        <a href="mailto:contact@ad-yo.com" title="Email us" aria-label="Email us">contact@ad-yo.com</a>
+      </div>
+      <address class="not-italic">
+        <h4 class="h3">Address:</h4>
+        <span>Grafenauweg 8, Zug, ZG 6300, Switzerland</span>
+      </address>
+      <div class="flex [&>*]:size-5 gap-5">
+        <a href="#" title="Follow us on Twitter" aria-label="Follow us on Twitter">
+          <nuxt-icon name="twitter" filled />
+        </a>
+        <a href="#" title="Follow us on LinkedIn" aria-label="Follow us on LinkedIn">
+          <nuxt-icon name="linkedin" filled />
+        </a>
+        <a href="#" title="Follow us on Telegram" aria-label="Follow us on Telegram">
+          <nuxt-icon name="telegram" filled />
+        </a>
+      </div>
     </div>
   </footer>
 </template>
