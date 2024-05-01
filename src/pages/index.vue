@@ -136,7 +136,6 @@ onMounted(() => {
           class="xl:hidden" /> — <br class="xl:hidden" />my property</h2>
         <ElementsCopyCreateProfile class="block mt-14 xl:hidden" />
       </div>
-      <!--      <div class="xl:hidden bg-bag"></div>-->
     </div>
 
     <div
@@ -180,7 +179,7 @@ onMounted(() => {
     <Snake />
   </section>
 
-  <section class="bg-[#EAEAEA] wrapper lg:bg-artichoke flex lg:items-center">
+  <section class="wrapper lg:bg-artichoke flex lg:items-center">
     <div
       class="flex flex-col justify-between w-full lg:items-center [&>*]:flex-1 lg:[&>.info-block]:max-w-[300px] grow lg:flex-row">
       <div>
