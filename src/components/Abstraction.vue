@@ -8,23 +8,25 @@ import {
 import { AdYoCanvasAnimator } from "~/shared";
 
 const refCanvas = ref<HTMLCanvasElement>();
-const canvasWidth = 150;
-const canvasCenterX = canvasWidth / 2;
+const canvasWidthMobile = 80;
+const canvasWidthDesktop = 150;
+const canvasWidth = ref<number>(canvasWidthDesktop);
+let canvasCenterX = canvasWidth.value / 2;
 let animator: AdYoCanvasAnimator;
 const sizesWeights = [50, 25, 10, 7, 3];
 let lastY = 0;
 const pt = 4;
 const sizes = [pt, pt*2, pt*5, pt*12, pt*18];
 const minWidth = pt*3;
-const maxWidth = Math.round(canvasCenterX);
 let observer: IntersectionObserver;
 
 function fillCanvas() {
   const canvas = refCanvas.value;
   if(canvas) {
+    console.log(canvasCenterX);
     while (lastY < canvas.height) {
       const xStart = Math.random() > 0.5 ? canvasCenterX : Math.random() * canvasCenterX;
-      const widthStart = minWidth + (Math.random() * (maxWidth - minWidth));
+      const widthStart = minWidth + (Math.random() * ((Math.round(canvasCenterX)) - minWidth));
       const h = sizes[weighedRandom(sizesWeights)];
       const widthEnd = Math.random() * canvasCenterX;
       const xEnd = xStart === canvasCenterX ? 0 : canvasCenterX;
@@ -89,7 +91,6 @@ function weighedRandom(weights: number[]): number {
 
 function addAnimations() {
   if(!animator) return;
-  console.log("addAnimations");
   const animations = animator.getAnimations();
 
   const lastAnimation = animations.reduce((max, current) => {
@@ -114,7 +115,18 @@ function removeAnimations() {
 function onResize(event?: Event): void {
   if (refCanvas.value) {
     const canvas = refCanvas.value;
-    canvas.width = 150;
+
+    console.log("!!!!");
+
+    if(window.innerWidth <= 768 && canvasWidth.value !== canvasWidthMobile) {
+      redraw(canvasWidthMobile);
+    } else if(window.innerWidth > 768 && canvasWidth.value !== canvasWidthDesktop) {
+      redraw(canvasWidthDesktop);
+    }
+
+    //canvasCenterX = canvasWidth.value / 2;
+
+    //canvas.width = 150;
     if(window.innerHeight > canvas.height) {
       canvas.height = window.innerHeight;
       addAnimations();
@@ -125,11 +137,25 @@ function onResize(event?: Event): void {
   }
 }
 
+function redraw(newWidth:number): void {
+  if(refCanvas.value) {
+    canvasWidth.value = refCanvas.value.width = newWidth;
+    canvasCenterX = canvasWidth.value / 2;
+    lastY = 0;
+
+    if(animator) {
+      animator.removeAllAnimations();
+      animator.setCanvasWidth(canvasWidth.value);
+      fillCanvas();
+    }
+  }
+}
+
 onMounted(() => {
   if (refCanvas.value) {
     window.addEventListener("resize", onResize);
     onResize();
-    animator = new AdYoCanvasAnimator(refCanvas.value, canvasWidth, pt);
+    animator = new AdYoCanvasAnimator(refCanvas.value, canvasWidth.value, pt);
     fillCanvas();
 
     observer = new IntersectionObserver((entries) => {
