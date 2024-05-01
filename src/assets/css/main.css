@@ -19,6 +19,10 @@
         background: url("/images/bg_artichoke.webp") no-repeat center center / cover;
         background-size: 600px;
     }
+
+    .mob-p {
+        @apply px-6 py-8 md:p-0;
+    }
 }
 
 @layer utilities {
@@ -159,7 +163,7 @@ html {
             }
 
             .wrapper {
-                @apply p-6 md:p-10;
+                @apply p-6 py-8 md:p-10;
             }
 
             .nuxt-icon {
@@ -174,7 +178,7 @@ html {
             }
 
             .info-block {
-                @apply space-y-8;
+                @apply space-y-4 md:space-y-8;
             }
         }
     }
