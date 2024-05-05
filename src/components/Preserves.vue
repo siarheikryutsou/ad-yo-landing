@@ -105,7 +105,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="bg-preserves flex flex-col h-full" ref="refSection">
+  <section class="bg-preserves flex flex-col h-full bg-[center_top_60%] md:bg-[center_top_70%] lg:bg-center" ref="refSection">
     <slot />
   </section>
 </template>
