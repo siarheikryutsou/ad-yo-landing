@@ -1,42 +1,52 @@
 <script setup lang="ts">
 useSeoMeta({
   title: "Ad-Yo's Infrastructure: App and Ad Manager | Ad-Yo",
-  description: "Ad-Yo allows users to sell access to blockchain-encrypted personal data and receive payments for ad views and other actions taken.",
+  description: "Ad-Yo allows users to sell access to blockchain-encrypted personal data and receive payments for ad views and other actions taken."
 });
 </script>
 
 <template>
-  <section>
-    <div>
-      <h1>Ad-Yo App and Ad Manager</h1>
-      <h2>Infrastructure</h2>
-      <p>Ad–Yo allows customers to sell access to their blockchain-encrypted personal data and receive payments for ad
-        views and other actions taken</p>
-    </div>
-  </section>
-
-  <section>
-    <h2>App</h2>
-    <div>
-      <div>The app allows customers to register using a phone number and the data is stored directly on the device.
-      </div>
-      <div>Through an intuitive interface, customers can interact with ads, complete quests and tasks for advertisers.
-      </div>
-      <div>The profile displays the balance and transaction history. In order to withdraw rewards, customers have to
-        connect their browser wallets.
+  <section class="wrapper bg-infra-top flex flex-col grow justify-between">
+    <h1>Ad-Yo App and Ad Manager</h1>
+    <div class="flex flex-col items-end">
+      <div class="max-w-[360px]">
+        <h2 class="h1">Infrastructure</h2>
+        <p>Ad–Yo allows customers to sell access to their blockchain-encrypted personal data and receive payments for ad
+          views and other actions taken</p>
       </div>
     </div>
   </section>
 
-  <section>
-    <div>
-      <h2>Ad manager</h2>
+  <section class="wrapper flex grow items-center">
+    <div class="flex items-center">
+      <h2 class="h1">App</h2>
+    </div>
+
+    <div class="w-full flex [&>*]:max-w-[250px] [&>*]:space-y-12 justify-center gap-20">
+      <div>
+        <img src="/images/infra_app_img_01.webp" alt="App screenshot: Sign Up screen" width="805" height="1736"
+             loading="lazy" />
+        <p>The app allows customers to register using a phone number and the data is stored directly on the device.</p>
+      </div>
+      <div>
+        <img src="/images/infra_app_img_02.webp" alt="App screenshot: Interface example" width="805" height="1736"
+             loading="lazy" />
+        <p>Through an intuitive interface, customers can interact with ads, complete quests and tasks for advertisers.</p>
+      </div>
+      <div>
+        <img src="/images/infra_app_img_03.webp" alt="App screenshot: Profile screen" width="805" height="1736"
+             loading="lazy" />
+        <p>The profile displays the balance and transaction history. In order to withdraw rewards, customers have to
+          connect their browser wallets.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrapper bg-infra-ad-manager flex grow w-full">
+    <div class="max-w-[320px] flex flex-col justify-center">
+      <h2 class="h1 mb-10">Ad manager</h2>
       <p>Through a user-friendly interface, the advertiser gets the opportunity to set up advertising campaigns,
         effectively focusing them on the right audience.</p>
     </div>
   </section>
 </template>
-
-<style scoped>
-
-</style>
