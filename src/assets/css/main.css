@@ -22,7 +22,7 @@
     }
 
     .bg-preserves {
-        background: url("/images/preserves/1.webp") no-repeat center / contain;
+        background: url("/images/preserves/1.webp") no-repeat center center / contain;
     }
 
     .bg-artichoke {
@@ -30,8 +30,28 @@
         background-size: 600px;
     }
 
+    .bg-about {
+        background-image: url("/images/bg_about_top.gif");
+    }
+
+    .bg-tech-protocol {
+        background: url("/images/tech_protocol_bg_img.jpeg") no-repeat center center / cover;
+    }
+
+    .bg-infra-top {
+        background: url("/images/bg_infra_top.webp") no-repeat center center / cover;
+    }
+
+    .bg-infra-ad-manager {
+        background: url("/images/bg_infra_ad_manager.webp") no-repeat center center / cover;
+    }
+
     .mob-p {
         @apply px-6 py-8 md:p-0;
+    }
+
+    .wrapper {
+        @apply p-6 py-8 md:p-10;
     }
 
     h1, .h1 {
@@ -44,6 +64,10 @@
 
     h3, .h3 {
         @apply font-bold;
+    }
+
+    .menu-open {
+        @apply overflow-hidden md:overflow-auto;
     }
 }
 
@@ -172,10 +196,6 @@ html {
                 @apply w-full min-h-screen overflow-hidden;
             }
 
-            .wrapper {
-                @apply p-6 py-8 md:p-10;
-            }
-
             .nuxt-icon {
                 display: flex;
 
@@ -189,6 +209,13 @@ html {
 
             .info-block {
                 @apply space-y-4 md:space-y-8;
+            }
+
+            .tech-nft-num  {
+                @apply flex items-center;
+                img {
+                    width: 200px;
+                }
             }
         }
     }
