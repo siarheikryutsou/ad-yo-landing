@@ -26,28 +26,28 @@ onMounted(() => {
     </div>
   </section>
 
-  <section class="bg-[#EAEAEA] p-0 md:px-24 md:py-40 flex flex-col md:justify-center">
-    <div class="flex flex-col md:flex-row justify-between md:gap-12 grow">
-      <h2 class="mob-p md:p-0">Ad–Yo — is a scalable open-source platform based on blockchain and peer-to-peer
+  <section class="bg-[#EAEAEA] p-0 xl:px-24 xl:py-40 flex flex-col xl:justify-center">
+    <div class="flex flex-col xl:flex-row justify-between xl:gap-12 grow xl:[&>.mv]:max-w-[300px]">
+      <h2 class="mob-p md:wrapper xl:p-0 mv">Ad–Yo — is a scalable open-source platform based on blockchain and peer-to-peer
         networking technologies</h2>
 
-      <div class="relative md:w-2/5 md:flex-shrink-0">
-        <img src="/images/index_pic_2_tc.svg" class="absolute -top-[96px] left-[29%] hidden md:block" loading="lazy"
+      <div class="relative xl:w-2/5 xl:flex-shrink-0 grow flex items-center w-full">
+        <img src="/images/index_pic_2_tc.svg" class="absolute -top-[96px] left-[29%] hidden xl:block" loading="lazy"
              alt="Illustration">
-        <div class="relative">
-          <img src="/images/index_pic_2.webp" loading="lazy" alt="Illustration">
-          <img src="/images/index_pic_2_inside.svg" class="absolute top-[56%] left-[35%] hidden md:block" loading="lazy"
+        <div class="relative w-full">
+          <img src="/images/index_pic_2.webp" loading="lazy" alt="Illustration" class="w-full">
+          <img src="/images/index_pic_2_inside.svg" class="absolute top-[56%] left-[35%] hidden xl:block" loading="lazy"
                alt="Illustration">
         </div>
-        <img src="/images/index_pic_2_bl.svg" class="absolute -bottom-[53px] -left-[89px] hidden md:block"
+        <img src="/images/index_pic_2_bl.svg" class="absolute -bottom-[53px] -left-[89px] hidden xl:block"
              loading="lazy"
              alt="Illustration">
-        <img src="/images/index_pic_2_br.svg" class="absolute -bottom-[39px] right-[24px] hidden md:block"
+        <img src="/images/index_pic_2_br.svg" class="absolute -bottom-[39px] right-[24px] hidden xl:block"
              loading="lazy"
              alt="Illustration">
       </div>
 
-      <div class="flex flex-col justify-end info-block mob-p">
+      <div class="flex flex-col justify-end info-block mob-p md:wrapper xl:p-0 mv">
         <h3 class="font-bold">Our mission is to change the way advertisers and customers interact. </h3>
         <p>Customers can trade their accurate and depersonalized data to advertisers in the global digital market and
           earn
@@ -107,7 +107,7 @@ onMounted(() => {
   <section class="wrapper flex flex-col justify-center">
     <div class="xl:grow flex flex-col gap-14">
       <h2 class="text-[28px] md:h1 xl:mb-20">Identity that matters</h2>
-      <div class="flex flex-col gap-14 xl:flex-row xl:gap-12 grow xl:[&>.copy]:max-w-[300px]">
+      <div class="flex flex-col gap-14 xl:flex-row xl:gap-12 grow xl:justify-between xl:[&>.copy]:max-w-[300px]">
         <div class="flex flex-col gap-14 xl:gap-0 justify-between copy">
           <p>Every individual has a set of values and interests that come together in a unique way</p>
           <p>For every Ad-Yo customer, a dynamic NFT artwork is created using generative technologies, based on the
@@ -218,29 +218,4 @@ onMounted(() => {
       </div>
     </div>
   </section>
-
-  <footer class="bg-[#EAEAEA] wrapper !py-20">
-    <div class="flex flex-col items-center gap-6 lg:gap-0 lg:flex-row justify-between [&>*]:flex [&>*]:gap-2">
-      <h3>Ad – Yo GmbH</h3>
-      <div>
-        <h4 class="h3">E-Mail:</h4>
-        <a href="mailto:contact@ad-yo.com" title="Email us" aria-label="Email us">contact@ad-yo.com</a>
-      </div>
-      <address class="not-italic">
-        <h4 class="h3">Address:</h4>
-        <span>Grafenauweg 8, Zug, ZG 6300, Switzerland</span>
-      </address>
-      <div class="flex [&>*]:size-5 gap-5">
-        <a href="#" title="Follow us on Twitter" aria-label="Follow us on Twitter">
-          <nuxt-icon name="twitter" filled />
-        </a>
-        <a href="#" title="Follow us on LinkedIn" aria-label="Follow us on LinkedIn">
-          <nuxt-icon name="linkedin" filled />
-        </a>
-        <a href="#" title="Follow us on Telegram" aria-label="Follow us on Telegram">
-          <nuxt-icon name="telegram" filled />
-        </a>
-      </div>
-    </div>
-  </footer>
 </template>
