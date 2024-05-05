@@ -67,7 +67,7 @@ watch(showMenu, () => {
     setMenuItemsDelay();
   }
 
-  document.body.classList.toggle("overflow-hidden", showMenu.value);
+  document.body.classList.toggle("menu-open", showMenu.value);
 });
 
 </script>
