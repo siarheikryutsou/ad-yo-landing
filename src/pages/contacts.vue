@@ -7,8 +7,10 @@ useSeoMeta({
 </script>
 
 <template>
-  <h1>Ad-Yo's Contact Information</h1>
-  <div class="flex-grow flex items-center justify-center">
-    <img src="/images/contacts_illustration.svg" width="320" height="420" alt="Illustration" loading="lazy" />
-  </div>
+  <section class="wrapper flex flex-col !min-h-0 grow">
+    <h1>Ad-Yo's Contact Information</h1>
+    <div class="flex-grow flex items-center justify-center">
+      <img src="/images/contacts_illustration.svg" width="128" height="170" alt="Illustration" loading="lazy" />
+    </div>
+  </section>
 </template>
