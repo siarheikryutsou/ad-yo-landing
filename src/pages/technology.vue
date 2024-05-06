@@ -7,12 +7,13 @@ useSeoMeta({
 
 <template>
   <section class="wrapper flex flex-col w-full">
-    <div class="flex [&>*]:flex-1 w-full items-center gap-20">
-      <h1>Ad-Yo technology, protocol and NFT profile</h1>
+    <div class="lg:flex [&>*]:flex-1 w-full items-center gap-20">
+      <h1 class="mb-10 md:mb-14 lg:mb-0">Ad-Yo technology, protocol and NFT profile</h1>
       <h2>Decentralized platform for depersonalized data trading</h2>
     </div>
     <div class="flex flex-col w-full grow items-center justify-center">
-      <img src="/images/tech_scheme_1.webp" alt="Technology scheme" width="2020" height="714" class="w-4/5" />
+      <img src="/images/tech_scheme_1.webp" alt="Technology scheme" width="2020" height="714" loading="lazy" class="w-full lg:w-4/5 hidden xl:block" />
+      <img src="/images/tech_scheme_1_mob.svg" alt="Technology scheme" width="325" height="822" class="w-full max-w-[400px] mt-14 xl:hidden" />
     </div>
   </section>
 
