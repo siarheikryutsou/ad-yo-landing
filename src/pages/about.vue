@@ -106,14 +106,14 @@ const team = [
 
   <section id="team" class="wrapper !pt-28 !pb-40">
     <h2 class="h1 text-center mb-28">Team</h2>
-    <div class="flex md:flex-wrap xl:gap-16">
-      <div class="md:w-1/2 xl:flex-1" v-for="person in team" :key="person.name">
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-16">
+      <div class="" v-for="person in team" :key="person.name">
         <div class="h-64 w-full mb-14">
-          <img class="object-contain w-full h-full" :src="`/images/${person.img}`" :alt="`${person.name}'s photo`" />
+          <img class="object-contain object-left-top xl:object-center w-full h-full" :src="`/images/${person.img}`" :alt="`${person.name}'s photo`" />
         </div>
         <h3 class="h2 font-bold">{{ person.name }}</h3>
-        <p class="h2 mb-14">{{ person.position }}</p>
-        <p class="mb-10 font-bold">{{ person.description }}</p>
+        <p class="h2 mb-8">{{ person.position }}</p>
+        <p class="mb-8 font-bold">{{ person.description }}</p>
         <p>{{ person.experience }}</p>
       </div>
     </div>
