@@ -6,11 +6,11 @@ useSeoMeta({
 </script>
 
 <template>
-  <section class="wrapper bg-infra-top flex flex-col grow justify-between">
-    <h1>Ad-Yo App and Ad Manager</h1>
-    <div class="flex flex-col items-end">
+  <section class="wrapper bg-infra-top-mob md:bg-infra-top flex flex-col grow md:justify-between">
+    <h1 class="mb-6 md:mb-0">Ad-Yo App and Ad Manager</h1>
+    <div class="flex md:flex-col md:items-end">
       <div class="max-w-[360px]">
-        <h2 class="h1">Infrastructure</h2>
+        <h2 class="md:h1">Infrastructure</h2>
         <p>Ad–Yo allows customers to sell access to their blockchain-encrypted personal data and receive payments for ad
           views and other actions taken</p>
       </div>

@@ -42,6 +42,10 @@
         background: url("/images/bg_infra_top.webp") no-repeat center center / cover;
     }
 
+    .bg-infra-top-mob {
+        background: url("/images/bg_infra_top_mob.webp") no-repeat bottom center / cover;
+    }
+
     .bg-infra-ad-manager {
         background: url("/images/bg_infra_ad_manager.webp") no-repeat center center / cover;
     }
