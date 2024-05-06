@@ -108,9 +108,9 @@ const nftProfileCopy = [
   </section>
 
   <section class="wrapper flex flex-col justify-center w-full" id="blockchain">
-    <h2 class="h1 mb-20">Blockchain</h2>
-    <div class="flex gap-12">
-      <div class="w-2/3 shrink-0 flex flex-col">
+    <h2 class="mb-10 md:mb-20 h1">Blockchain</h2>
+    <div class="flex flex-col xl:flex-row gap-12">
+      <div class="xl:w-2/3 shrink-0 flex flex-col">
         <img src="/images/tech_blockchain_scheme.svg" width="1703" height="836" alt="Blockchain scheme" />
         <div class="flex w-full [&>*]:text-center">
           <span class="w-[23.3%]">ADYO owners</span>
