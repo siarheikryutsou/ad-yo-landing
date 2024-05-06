@@ -46,6 +46,10 @@
         background: url("/images/bg_infra_ad_manager.webp") no-repeat center center / cover;
     }
 
+    .bg-roadmap-mob {
+        background: url("/images/about_roadmap_mob.svg") repeat top left;
+    }
+
     .mob-p {
         @apply px-6 py-8 md:p-0;
     }
@@ -68,6 +72,12 @@
 
     .menu-open {
         @apply overflow-hidden md:overflow-auto;
+    }
+
+    .rotation-90 {
+        transform: rotate(90deg) translateY(-100%);
+        transform-origin: top left;
+        width: 100%;
     }
 }
 

@@ -82,13 +82,13 @@ const team = [
     <div class="relative px-[30px]">
       <div class="relative pt-[56.25%] -mx-[30px]">
         <div
-          class="bg-about absolute overflow-hidden inset-0 w-full bg-no-repeat bg-[length:120%] bg-[left_top]">
+          class="xl:bg-about absolute overflow-hidden inset-0 w-full bg-no-repeat bg-[length:120%] bg-[left_top]">
           <div class="wrapper flex w-full flex-col h-full">
-            <div class="flex w-full h-full justify-between">
+            <div class="flex flex-col xl:flex-row w-full h-full xl:justify-between">
               <div class="flex items-end">
-                <h1 class="">Digital advertising<br /> using blockchain<br /> technology</h1>
+                <h1 class="">Digital advertising<br class="hidden xl:block" /> using blockchain<br class="hidden xl:block" /> technology</h1>
               </div>
-              <div class="info-block max-w-[300px] mt-10">
+              <div class="info-block xl:max-w-[300px] mt-10">
                 <p>The idea of Ad-Yo originated in 2021 and the development started in 2022.</p>
                 <p>The company is headquartered in Paris, France, and the entire team consists of 8 people. </p>
               </div>
@@ -105,11 +105,12 @@ const team = [
   </section>
 
   <section id="team" class="wrapper !pt-28 !pb-40">
-    <h2 class="h1 text-center mb-28">Team</h2>
+    <h2 class="h1 mb-28">Team</h2>
     <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-16">
       <div class="" v-for="person in team" :key="person.name">
         <div class="h-64 w-full mb-14">
-          <img class="object-contain object-left-top xl:object-center w-full h-full" :src="`/images/${person.img}`" :alt="`${person.name}'s photo`" />
+          <img class="object-contain object-left-top xl:object-center w-full h-full" :src="`/images/${person.img}`"
+               :alt="`${person.name}'s photo`" />
         </div>
         <h3 class="h2 font-bold">{{ person.name }}</h3>
         <p class="h2 mb-8">{{ person.position }}</p>
@@ -120,24 +121,47 @@ const team = [
   </section>
 
   <section id="roadmap">
-    <div class="wrapper !mb-0">
-      <h2 class="h1 mb-28">Roadmap</h2>
-      <div class="flex">
-        <div v-for="point in roadmapContent" :key="point.year" class="flex-1 h2">
-          <div>{{ point.year }}</div>
-          <div class="w-px h-24 border border-black mt-7"></div>
+    <div class="hidden lg:block">
+      <div class="wrapper !mb-0">
+        <h2 class="h1 mb-28">Roadmap</h2>
+        <div class="flex">
+          <div v-for="point in roadmapContent" :key="point.year" class="flex-1 h2">
+            <div>{{ point.year }}</div>
+            <div class="w-px h-24 border border-black mt-7"></div>
+          </div>
+        </div>
+      </div>
+
+      <img class="w-full" src="/images/about_roadmap.svg" alt="Illustration" aria-hidden="true" width="1760" height="109">
+
+      <div class="wrapper flex [&>*]:flex-1">
+        <div v-for="point in roadmapContent" :key="point.title">
+          <div class="w-px h-24 border border-black mb-7"></div>
+          <h3 class="h2 mb-16">{{ point.title }}</h3>
+          <ul class="list-disc ml-8 space-y-4">
+            <li v-for="item in point.list" :key="item">{{ item }}</li>
+          </ul>
         </div>
       </div>
     </div>
-    <img src="/images/about_roadmap.svg" alt="Illustration">
 
-    <div class="wrapper flex [&>*]:flex-1">
-      <div v-for="point in roadmapContent" :key="point.title">
-        <div class="w-px h-24 border border-black mb-7"></div>
-        <h3 class="h2 mb-16">{{ point.title }}</h3>
-        <ul class="list-disc ml-8">
-          <li v-for="item in point.list" :key="item">{{ item }}</li>
-        </ul>
+    <div class="lg:hidden wrapper">
+      <h2 class="h1 mb-28">Roadmap</h2>
+      <div class="flex gap-3">
+
+        <div class="bg-roadmap-mob w-[64px] shrink-0" />
+
+        <div class="grow space-y-14">
+          <div v-for="point in roadmapContent" :key="point.title">
+            <h3 class="h2 font-bold mb-8">— {{ point.year }}</h3>
+            <div class="ml-7">
+              <h4 class="h2 mb-6">{{point.title}}</h4>
+              <ul class="list-disc ml-8 space-y-4">
+                <li v-for="item in point.list" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
