@@ -16,7 +16,7 @@ useSeoMeta({
     </div>
   </section>
 
-  <section class="wrapper">
+  <section class="wrapper" id="nft-profile">
     <h2 class="h1 mb-20">NFT profile</h2>
     <div class="grid grid-cols-3 grid-rows-2 gap-y-20">
       <div class="tech-nft-num">
@@ -50,7 +50,7 @@ useSeoMeta({
     </div>
   </section>
 
-  <section class="wrapper">
+  <section class="wrapper" id="protocol">
     <h2 class="mb-20 h1">Protocol</h2>
     <div class="flex gap-14 [&>*]:flex-1 [&>.text-block]:space-y-12">
       <div class="w-full grow bg-tech-protocol wrapper flex items-center justify-center">
@@ -93,7 +93,7 @@ useSeoMeta({
     </div>
   </section>
 
-  <section class="wrapper flex flex-col justify-center w-full">
+  <section class="wrapper flex flex-col justify-center w-full" id="blockchain">
     <h2 class="h1 mb-20">Blockchain</h2>
     <div class="flex gap-12">
       <div class="w-2/3 shrink-0 flex flex-col">

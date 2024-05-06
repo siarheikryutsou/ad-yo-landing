@@ -104,7 +104,7 @@ const team = [
     </div>
   </section>
 
-  <section class="wrapper !pt-28 !pb-40">
+  <section id="team" class="wrapper !pt-28 !pb-40">
     <h1 class="text-center mb-28">Team</h1>
     <div class="flex gap-32">
       <div class="flex-1" v-for="person in team" :key="person.name">
@@ -119,7 +119,7 @@ const team = [
     </div>
   </section>
 
-  <section>
+  <section id="roadmap">
     <div class="wrapper !mb-0">
       <h2 class="h1 mb-28">Roadmap</h2>
       <div class="flex">

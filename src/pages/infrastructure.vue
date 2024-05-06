@@ -17,7 +17,7 @@ useSeoMeta({
     </div>
   </section>
 
-  <section class="wrapper flex grow items-center">
+  <section class="wrapper flex grow items-center" id="app">
     <div class="flex items-center">
       <h2 class="h1">App</h2>
     </div>
@@ -42,7 +42,7 @@ useSeoMeta({
     </div>
   </section>
 
-  <section class="wrapper bg-infra-ad-manager flex grow w-full">
+  <section class="wrapper bg-infra-ad-manager flex grow w-full" id="advert-manager">
     <div class="max-w-[320px] flex flex-col justify-center">
       <h2 class="h1 mb-10">Ad manager</h2>
       <p>Through a user-friendly interface, the advertiser gets the opportunity to set up advertising campaigns,
