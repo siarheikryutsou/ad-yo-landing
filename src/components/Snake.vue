@@ -131,6 +131,10 @@ onMounted(async () => {
   setPositions();
 
   animator.start();
+  setTimeout(() => {
+    animator.pause();
+  }, 1000);
+
 });
 
 
