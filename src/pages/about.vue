@@ -78,19 +78,22 @@ const team = [
 </script>
 
 <template>
-  <section class="h-auto !min-h-0">
-    <div class="relative px-[30px]">
-      <div class="relative pt-[56.25%] -mx-[30px]">
+  <section class="h-auto xl:!min-h-0 flex grow xl:block">
+    <div class="relative xl:px-[30px] flex xl:block">
+      <div class="relative xl:pt-[56.25%] xl:-mx-[30px] grow flex">
         <div
-          class="xl:bg-about absolute overflow-hidden inset-0 w-full bg-no-repeat bg-[length:120%] bg-[left_top]">
-          <div class="wrapper flex w-full flex-col h-full">
-            <div class="flex flex-col xl:flex-row w-full h-full xl:justify-between">
+          class="xl:bg-about xl:absolute xl:overflow-hidden inset-0 w-full bg-no-repeat bg-[length:120%] bg-[left_top] grow">
+          <div class="wrapper flex w-full flex-col h-full grow">
+            <div class="flex flex-col xl:flex-row w-full h-full grow xl:justify-between">
               <div class="flex items-end">
                 <h1 class="">Digital advertising<br class="hidden xl:block" /> using blockchain<br class="hidden xl:block" /> technology</h1>
               </div>
               <div class="info-block xl:max-w-[300px] mt-10">
                 <p>The idea of Ad-Yo originated in 2021 and the development started in 2022.</p>
                 <p>The company is headquartered in Paris, France, and the entire team consists of 8 people. </p>
+              </div>
+              <div class="w-full grow items-center flex mt-16 xl:hidden">
+                <img src="/images/bg_about_top.gif" width="2560" height="1440" alt="Illustration: Mobile app screenshot" loading="lazy" />
               </div>
             </div>
           </div>
