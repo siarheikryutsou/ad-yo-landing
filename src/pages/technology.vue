@@ -64,9 +64,10 @@ const nftProfileCopy = [
   </section>
 
   <section class="wrapper" id="protocol">
-    <h2 class="mb-20 h1">Protocol</h2>
-    <div class="flex gap-14 [&>*]:flex-1 [&>.text-block]:space-y-12">
-      <div class="w-full grow bg-tech-protocol wrapper flex items-center justify-center">
+    <h2 class="mb-10 md:mb-20 h1">Protocol</h2>
+    <div class="flex gap-14 flex-col md:flex-row [&>*]:flex-1 [&>.text-block]:space-y-12">
+
+      <div class="w-full order-1 md:order-none grow bg-tech-protocol wrapper flex items-center justify-center">
         <video class="mix-blend-multiply max-w-full max-h-full" muted autoplay loop>
           <source src="/video/tech-protocol.mp4" />
         </video>
@@ -90,7 +91,7 @@ const nftProfileCopy = [
         </div>
       </div>
 
-      <div class="text-block">
+      <div class="text-block order-2 md:order-none">
         <div class="info-block">
           <h3>Data storage</h3>
           <p>The data is stored directly on customer's devices, representing only a set of hashes that makes it possible
