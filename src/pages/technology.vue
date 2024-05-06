@@ -112,12 +112,12 @@ const nftProfileCopy = [
     <div class="flex flex-col xl:flex-row gap-12">
       <div class="xl:w-2/3 shrink-0 flex flex-col">
         <img src="/images/tech_blockchain_scheme.svg" width="1703" height="836" alt="Blockchain scheme" />
-        <div class="flex w-full [&>*]:text-center">
-          <span class="w-[23.3%]">ADYO owners</span>
-          <span class="w-[15%]">Vote</span>
-          <span class="w-[23.3%]">Elected delegates</span>
-          <span class="w-[15%]">Produces block</span>
-          <span class="w-[23.3%]">Blockchain</span>
+        <div class="flex w-full [&>*]:text-center [&>*]:hyphens-manual [&>*]:text-xs sm:[&>*]:text-sm">
+          <p class="w-[23.3%]">ADYO ow&shy;ners</p>
+          <p class="w-[15%]">Vote</p>
+          <p class="w-[23.3%]">Ele&shy;cted dele&shy;gates</p>
+          <p class="w-[15%]">Produ&shy;ces block</p>
+          <p class="w-[23.3%]">Block&shy;chain</p>
         </div>
       </div>
       <div class="space-y-12">
