@@ -54,25 +54,25 @@ const team = [
     experience: "Founder of Lunu.io payment cryptosystem, product design development of Lunu mPOS Terminal. 11 years of experience in e-commerce and IT projects. 4 years in blockchain and fintech projects."
   },
   {
-    name: "Artem Shaginyan",
+    name: "Pavlo Denysiuk",
     img: "team_pavlo.png",
-    position: "Founder",
-    description: "Entrepreneur & Industrial Designer",
-    experience: "Founder of Lunu.io payment cryptosystem, product design development of Lunu mPOS Terminal. 11 years of experience in e-commerce and IT projects. 4 years in blockchain and fintech projects."
+    position: "Partner, CEO",
+    description: "Experienced Chief Operating Officer",
+    experience: "Well rounded with experience of working in the management consulting industry. Skilled in Sales, Leadership, Management, Marketing, Merger & Acquisitions, Business Development and Marketing Strategy with a proven history of working in the e-commerce industry."
   },
   {
-    name: "Artem Shaginyan",
+    name: "Petr Vishnyakov",
     img: "team_petr.png",
-    position: "Founder",
-    description: "Entrepreneur & Industrial Designer",
-    experience: "Founder of Lunu.io payment cryptosystem, product design development of Lunu mPOS Terminal. 11 years of experience in e-commerce and IT projects. 4 years in blockchain and fintech projects."
+    position: "Partner",
+    description: "Business Analyst & System Architect",
+    experience: "Blockchain evangelist. Founder of Lunu.io payment cryptosystem. More than 20 years of experience in international IT projects. 7 years in blockchain and fintech projects."
   },
   {
-    name: "Artem Shaginyan",
+    name: "Alisa Mitvol",
     img: "team_alisa.png",
-    position: "Founder",
-    description: "Entrepreneur & Industrial Designer",
-    experience: "Founder of Lunu.io payment cryptosystem, product design development of Lunu mPOS Terminal. 11 years of experience in e-commerce and IT projects. 4 years in blockchain and fintech projects."
+    position: "Partner, CPO",
+    description: "Product, Creative Direction, Web3 Strategy",
+    experience: "Alisa has major experience in product development and management in a number of Web3 startups, having skillset to image and create digital products according to brands’ needs. She has a background in digital art, working with mixed reality and metaverse for more than five years."
   }
 ];
 </script>
@@ -105,14 +105,14 @@ const team = [
   </section>
 
   <section id="team" class="wrapper !pt-28 !pb-40">
-    <h1 class="text-center mb-28">Team</h1>
-    <div class="flex gap-32">
-      <div class="flex-1" v-for="person in team" :key="person.name">
+    <h2 class="h1 text-center mb-28">Team</h2>
+    <div class="flex md:flex-wrap xl:gap-16">
+      <div class="md:w-1/2 xl:flex-1" v-for="person in team" :key="person.name">
         <div class="h-64 w-full mb-14">
           <img class="object-contain w-full h-full" :src="`/images/${person.img}`" :alt="`${person.name}'s photo`" />
         </div>
-        <h3 class="font-bold">{{ person.name }}</h3>
-        <p class="mb-14">{{ person.position }}</p>
+        <h3 class="h2 font-bold">{{ person.name }}</h3>
+        <p class="h2 mb-14">{{ person.position }}</p>
         <p class="mb-10 font-bold">{{ person.description }}</p>
         <p>{{ person.experience }}</p>
       </div>

@@ -8,7 +8,7 @@ const refBlockRB = ref<HTMLElement>();
 const refBlockLB = ref<HTMLElement>();
 const refBlockCT = ref<HTMLElement>();
 const refBlockRT = ref<HTMLElement>();
-const MIN_WIDTH_DESKTOP = 1024;
+const MIN_WIDTH_DESKTOP = 1280;
 const POINT_SIZE = 8;
 let points: {a: Square, b: Square, c: Square, d: Square, e: Square, f: Square, g: Square};
 
@@ -18,6 +18,15 @@ function onResize() {
   const canvas = refCanvas.value;
   const container = refContainer.value;
   if (canvas && container) {
+    if(animator) {
+      if (window.innerWidth < MIN_WIDTH_DESKTOP) {
+        animator.pause();
+        return;
+      } else {
+        animator.resume();
+      }
+    }
+
     canvas.width = container.offsetWidth;
     canvas.height = container.offsetHeight;
     setTargets();
@@ -25,13 +34,8 @@ function onResize() {
 }
 
 function setTargets(): void {
-  //getElementRect
   const canvas = refCanvas.value;
   if (canvas && animator) {
-    const animations = animator.getAnimations();
-    const ad = animations[0];
-    const yo = animations[animations.length - 1];
-
     setPositions();
   }
 }
@@ -131,9 +135,9 @@ onMounted(async () => {
   setPositions();
 
   animator.start();
-  setTimeout(() => {
+  /*setTimeout(() => {
     animator.pause();
-  }, 1000);
+  }, 1000);*/
 
 });
 
@@ -143,11 +147,15 @@ onMounted(async () => {
 
 <template>
   <div ref="refContainer" class="flex flex-col grow relative">
-    <canvas ref="refCanvas" class="w-full h-full absolute top-0 left-0 right-0 bottom-0 bg-emerald-100"></canvas>
-    <div class="flex justify-between h-full grow [&>*]:flex-1 [&>*]:max-w-[300px] z-10">
-      <div class="flex flex-col justify-end flex-grow">
+    <canvas ref="refCanvas" class="hidden xl:block w-full h-full absolute top-0 left-0 right-0 bottom-0 bg-emerald-100" />
+    <div class="xl:hidden">
+      <img src="/images/snake_mob_decor_curve_1.svg" width="92" height="29" alt="" aria-hidden="true" loading="lazy" />
+      <img class="w-full mt-10 mb-20" src="/images/snake_mob.svg" width="312" height="148" aria-hidden="true" alt="" loading="lazy">
+    </div>
+    <div class="flex flex-col xl:flex-row justify-between h-full grow space-y-20 xl:space-y-0 xl:[&>*]:flex-1 xl:[&>*]:max-w-[300px] z-10">
+      <div class="flex flex-col justify-end xl:flex-grow">
         <div ref="refBlockLB" class="info-block">
-          <h3>Compliance <br />with GDPR data protection law</h3>
+          <h3>Compliance <br class="hidden xl:block" />with GDPR data protection law</h3>
           <p>This law establishes the rights of customers in relation to their personal data, namely: access control,
             storage, edit and deletion. Ad-Yo fully complies with the law: personal data is stored directly on user
             devices, and their data encrypted in hashes is stored on the blockchain. The advertiser gets access to
@@ -166,7 +174,7 @@ onMounted(async () => {
         </div>
       </div>
 
-      <div class="flex flex-col justify-between flex-grow">
+      <div class="flex flex-col xl:justify-between flex-grow">
         <div ref="refBlockRT" class="info-block">
           <h3>Verifiability</h3>
           <p>Depersonalized customer data, ad views and transaction information are recorded in the blockchain and can
