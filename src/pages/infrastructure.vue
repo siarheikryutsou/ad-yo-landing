@@ -17,7 +17,7 @@ useSeoMeta({
     </div>
   </section>
 
-  <section class="wrapper flex grow items-center gap-10 md:gap-14 flex-col md:flex-row" id="app">
+  <section class="wrapper flex grow md:items-center gap-10 md:gap-14 flex-col md:flex-row" id="app">
     <div class="flex items-center">
       <h2 class="h1">App</h2>
     </div>
@@ -42,11 +42,12 @@ useSeoMeta({
     </div>
   </section>
 
-  <section class="wrapper bg-infra-ad-manager flex grow w-full" id="advert-manager">
-    <div class="max-w-[320px] flex flex-col justify-center">
-      <h2 class="h1 mb-10">Ad manager</h2>
-      <p>Through a user-friendly interface, the advertiser gets the opportunity to set up advertising campaigns,
+  <section class="lg:wrapper lg:bg-infra-ad-manager flex grow w-full" id="advert-manager">
+    <div class="lg:max-w-[320px] flex flex-col lg:justify-center">
+      <h2 class="h1 lg:mb-10 wrapper lg:p-0">Ad manager</h2>
+      <p class="wrapper lg:p-0">Through a user-friendly interface, the advertiser gets the opportunity to set up advertising campaigns,
         effectively focusing them on the right audience.</p>
+      <img src="/images/bg_infra_ad_manager_mob.webp" width="1449" height="1440" alt="Illustration: Mobile application screenshot" />
     </div>
   </section>
 </template>
