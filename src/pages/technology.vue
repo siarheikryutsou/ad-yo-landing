@@ -3,6 +3,18 @@ useSeoMeta({
   title: "Secure Blockchain-Based Advertising Solutions | Ad-Yo",
   description: "Explore Ad-Yo ecosystem, created to improve ad targeting, promote data authenticity and security, ensure a fair distribution of profits."
 });
+
+const SWIPER_DELAY = 6000;
+
+const nftProfileCopy = [
+  "When a new customer registers, a generative art NFT is created.",
+  "The NFT in encrypted form represents a visualization of a set of the customer's interests, preferences and values.",
+  "Active customers make their NFT evolve by upgrading their profile with their actions.",
+  "When a customer levels up, their NFT changes and acquires new features, reflecting the evolution of their interests and actions.",
+  "Customers levels up depending on the fulfillment of tasks set by advertisers. As their profile evolves and the dynamic NFT acquires new features, the rarity and therefore the value of the NFT goes up.",
+  "Customers can display their profile NFTs as standalone digital art objects on OpenSea, Refinable, Rarible, NFTICALLY, NFTrade and other marketplaces.",
+];
+
 </script>
 
 <template>
@@ -17,37 +29,37 @@ useSeoMeta({
     </div>
   </section>
 
-  <section class="wrapper" id="nft-profile">
+  <section class="wrapper flex flex-col grow" id="nft-profile">
     <h2 class="h1 mb-20">NFT profile</h2>
-    <div class="grid grid-cols-3 grid-rows-2 gap-y-20">
-      <div class="tech-nft-num">
-        <img src="/images/num1.svg" width="400" height="500" alt="1" loading="lazy">
-        <p>When a new customer registers, a generative art NFT is created.</p>
-      </div>
-      <div class="tech-nft-num">
-        <img src="/images/num2.svg" width="400" height="500" alt="2" loading="lazy">
-        <p>The NFT in encrypted form represents a visualization of a set of the customer's interests, preferences and
-          values.</p>
-      </div>
-      <div class="tech-nft-num">
-        <img src="/images/num3.svg" width="400" height="500" alt="3" loading="lazy">
-        <p>Active customers make their NFT evolve by upgrading their profile with their actions.</p>
-      </div>
-      <div class="tech-nft-num">
-        <p>When a customer levels up, their NFT changes and acquires new features, reflecting the evolution of their
-          interests and actions.</p>
-        <img src="/images/num4.svg" width="400" height="500" alt="4" loading="lazy">
-      </div>
-      <div class="tech-nft-num">
-        <p>Customers levels up depending on the fulfillment of tasks set by advertisers. As their profile evolves and
-          the dynamic NFT acquires new features, the rarity and therefore the value of the NFT goes up.</p>
-        <img src="/images/num5.svg" width="400" height="500" alt="5" loading="lazy">
-      </div>
-      <div class="tech-nft-num">
-        <p>Customers can display their profile NFTs as standalone digital art objects on OpenSea, Refinable, Rarible,
-          NFTICALLY, NFTrade and other marketplaces.</p>
-        <img src="/images/num6.svg" width="400" height="500" alt="6" loading="lazy">
-      </div>
+
+    <div class="hidden xl:grid grid-cols-3 grid-rows-2 gap-y-20">
+      <ElementsTechNFTItem v-for="(text, index) in nftProfileCopy" :key="index" :num="index + 1" :num-first="index < 3" :text="text" />
+    </div>
+
+    <div class="xl:hidden flex grow items-center">
+      <Swiper
+        :modules="[SwiperAutoplay]"
+        :space-between="0"
+        :slides-per-view="1"
+        :autoplay="{
+          delay: SWIPER_DELAY,
+          disableOnInteraction: true
+        }"
+        :breakpoints="{
+              890: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+                autoplay: {
+                  delay: SWIPER_DELAY * 2,
+                  disableOnInteraction: true,
+                }
+              },
+            }"
+        >
+        <SwiperSlide v-for="(text, index) in nftProfileCopy" :key="index">
+          <ElementsTechNFTItem :num="index + 1" :num-first="true" :text="text" />
+        </SwiperSlide>
+      </Swiper>
     </div>
   </section>
 

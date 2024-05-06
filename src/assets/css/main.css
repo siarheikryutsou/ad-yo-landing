@@ -224,7 +224,7 @@ html {
             .tech-nft-num  {
                 @apply flex items-center;
                 img {
-                    width: 200px;
+                    @apply w-[100px] min-w-[100px] min-[400px]:w-[200px] min-[400px]:min-w-[200px];
                 }
             }
         }

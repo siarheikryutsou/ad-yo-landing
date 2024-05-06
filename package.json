@@ -11,9 +11,10 @@
   },
   "dependencies": {
     "nuxt": "^3.11.2",
+    "nuxt-icons": "^3.2.1",
+    "nuxt-swiper": "^1.2.2",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0",
-    "nuxt-icons": "^3.2.1"
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@nuxtjs/google-fonts": "^3.2.0",
