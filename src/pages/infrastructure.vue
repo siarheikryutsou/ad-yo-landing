@@ -17,23 +17,23 @@ useSeoMeta({
     </div>
   </section>
 
-  <section class="wrapper flex grow items-center" id="app">
+  <section class="wrapper flex grow items-center gap-10 md:gap-14 flex-col md:flex-row" id="app">
     <div class="flex items-center">
       <h2 class="h1">App</h2>
     </div>
 
-    <div class="w-full flex [&>*]:max-w-[250px] [&>*]:space-y-12 justify-center gap-20">
-      <div>
+    <div class="w-full flex flex-col md:flex-row [&>*]:flex [&>*]:w-full [&>*]:gap-6 md:[&>*]:gap-0 md:[&>*]:flex-1 md:[&>*]:block md:[&>*]:max-w-[250px] md:[&>*]:space-y-12 justify-center gap-20">
+      <div class="[&>*]:w-1/2 [&>p]:flex [&>p]:items-center md:[&>*]:w-full md:[&>*]:block">
         <img src="/images/infra_app_img_01.webp" alt="App screenshot: Sign Up screen" width="805" height="1736"
              loading="lazy" />
         <p>The app allows customers to register using a phone number and the data is stored directly on the device.</p>
       </div>
-      <div>
-        <img src="/images/infra_app_img_02.webp" alt="App screenshot: Interface example" width="805" height="1736"
+      <div class="[&>*]:w-1/2 [&>p]:flex [&>p]:items-center md:[&>*]:w-full md:[&>*]:block">
+        <img class="order-1" src="/images/infra_app_img_02.webp" alt="App screenshot: Interface example" width="805" height="1736"
              loading="lazy" />
         <p>Through an intuitive interface, customers can interact with ads, complete quests and tasks for advertisers.</p>
       </div>
-      <div>
+      <div class="[&>*]:w-1/2 [&>p]:flex [&>p]:items-center md:[&>*]:w-full md:[&>*]:block">
         <img src="/images/infra_app_img_03.webp" alt="App screenshot: Profile screen" width="805" height="1736"
              loading="lazy" />
         <p>The profile displays the balance and transaction history. In order to withdraw rewards, customers have to
