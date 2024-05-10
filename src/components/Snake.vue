@@ -11,7 +11,8 @@ const refBlockRT = ref<HTMLElement>();
 const MIN_WIDTH_DESKTOP = 1280;
 const POINT_SIZE = 8;
 let points: { a: Square, b: Square, c: Square, d: Square, e: Square, f: Square, g: Square, bb: Square, cc: Square, ccc: Square, dd: Square, ddd: Square, ee: Square };
-
+const pointAnimations:CanvasAnimatorAnimation[] = [];
+let yoAnimation: CanvasAnimatorAnimation;
 let animator: CanvasAnimator;
 
 function onResize() {
@@ -53,8 +54,7 @@ function setPositions(): void {
     const rectLB = getElementRect(blockLB, container);
     const rectCT = getElementRect(blockCT, container);
 
-    const animations = animator.getAnimations();
-    const yo = animations[animations.length - 1];
+    const yo = yoAnimation;
     yo.displayObject.x = canvas.width - yo.displayObject.width;
     yo.displayObject.y = Math.round((rectRT.bottom + ((rectRB.y - rectRT.bottom) * 0.65)) - (yo.displayObject.height / 2));
 
@@ -98,6 +98,10 @@ function setPositions(): void {
 
     points.f.width = points.g.x - points.f.x;
 
+    if(pointAnimations.length) {
+      pointAnimations.forEach(el => animator.removeAnimation(el));
+    }
+
     drawLine(points.b, points.bb);
     drawLine(points.bb, points.c);
     drawLine(points.c, points.cc);
@@ -116,36 +120,32 @@ function correctPoint(value: number) {
   return Math.round(value / POINT_SIZE) * POINT_SIZE;
 }
 
-function drawLine(pointA:Square, pointB:Square): void {
+function drawLine(pointA: Square, pointB: Square): void {
   const dx = Math.abs(pointB.x - pointA.x);
-  const dy = Math.abs(pointB.y - pointA.y);
+  const dy = -Math.abs(pointB.y - pointA.y);
   const sx = (pointA.x < pointB.x) ? POINT_SIZE : -POINT_SIZE;
   const sy = (pointA.y < pointB.y) ? POINT_SIZE : -POINT_SIZE;
 
-  let err = (dx > dy ? dx : -dy) / 2; // Коррекция начальной ошибки
-  let e2;
-  let currentX = pointA.x + sx; // начинаем с первой точки после начальной
-  let currentY = pointA.y + sy; // начинаем с первой точки после начальной
-
-  // Отрисовка начальной точки
-  const startSquare = new Square(pointA.x, pointA.y, POINT_SIZE, POINT_SIZE, getRandomColor());
-  animator.addAnimation(new CanvasAnimatorAnimation(startSquare, {}, 0));
+  let err = dx + dy;
+  let currentX = pointA.x;
+  let currentY = pointA.y;
 
   while (true) {
-    if ((sx > 0 && currentX > pointB.x) || (sx < 0 && currentX < pointB.x) ||
-      (sy > 0 && currentY > pointB.y) || (sy < 0 && currentY < pointB.y)) {
-      break; // Если следующий шаг выходит за пределы, заканчиваем
-    }
-
     const square = new Square(currentX, currentY, POINT_SIZE, POINT_SIZE, getRandomColor());
-    animator.addAnimation(new CanvasAnimatorAnimation(square, {}, 0));
+    const animation = new CanvasAnimatorAnimation(square, {}, 0);
+    pointAnimations.push(animation);
+    animator.addAnimation(animation);
 
-    e2 = err;
-    if (e2 > -dx) {
-      err -= dy;
+    if (currentX === pointB.x && currentY === pointB.y) break;
+
+    const e2 = 2 * err;
+    if (e2 >= dy) {
+      if (currentX === pointB.x) break;
+      err += dy;
       currentX += sx;
     }
-    if (e2 < dy) {
+    if (e2 <= dx) {
+      if (currentY === pointB.y) break;
       err += dx;
       currentY += sy;
     }
@@ -184,16 +184,14 @@ onMounted(async () => {
     f: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
     g: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
   };
+
+  yoAnimation = new CanvasAnimatorAnimation(yo, {}, 0);
   animator.addAnimations(
     new CanvasAnimatorAnimation(ad, {}, 0),
     new CanvasAnimatorAnimation(points.a, {}, 0),
-    /*new CanvasAnimatorAnimation(points.b, {}, 0),
-    new CanvasAnimatorAnimation(points.c, {}, 0),
-    new CanvasAnimatorAnimation(points.d, {}, 0),
-    new CanvasAnimatorAnimation(points.e, {}, 0),*/
     new CanvasAnimatorAnimation(points.f, {}, 0),
     new CanvasAnimatorAnimation(points.g, {}, 0),
-    new CanvasAnimatorAnimation(yo, {}, 0)
+    yoAnimation
   );
 
   setPositions();

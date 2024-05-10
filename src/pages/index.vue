@@ -15,7 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="relative" :class="{'bg-black': animationIsComplete}">
+  <section class="relative !pt-0" :class="{'bg-black': animationIsComplete}">
     <Intro v-if="!animationIsComplete" />
     <Abstraction v-if="animationIsComplete"
                  class="absolute h-full right-6 xl:left-1/2 md:-translate-x-1/2 md:right-auto md:left-3/4" />
