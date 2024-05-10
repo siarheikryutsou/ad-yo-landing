@@ -47,7 +47,7 @@
     }
 
     .bg-infra-ad-manager {
-        background: url("/images/bg_infra_ad_manager.webp") no-repeat center center / cover;
+        background: #f3f3f3 url("/images/bg_infra_ad_manager.webp") no-repeat center center / cover;
     }
 
     .bg-roadmap-mob {
@@ -190,7 +190,7 @@
         @apply ease-in-cubic;
         animation-name: kf-logo-to-white;
         animation-duration: 300ms;
-        animation-delay: 1850ms;
+        animation-delay: 1300ms;
         animation-fill-mode: forwards;
 
     }
@@ -207,7 +207,7 @@ html {
             @apply min-h-full flex flex-col;
 
             section {
-                @apply w-full min-h-screen overflow-hidden;
+                @apply w-full min-h-screen overflow-hidden pt-8;
             }
 
             .nuxt-icon {

@@ -78,7 +78,7 @@ watch(showMenu, () => {
        :class="{'bg-white bg-opacity-95 h-screen': showMenu}"
   >
     <div class="flex justify-end">
-      <button class="flex-auto flex-shrink flex-grow-0 text-white font-semibold text-lg bg-black px-10 py-1.5 group"
+      <button class="flex-auto mt-3 mr-6 md:mt-0 md:mr-0 flex-shrink flex-grow-0 text-white font-semibold text-lg bg-black px-3 md:px-10 py-1.5 group"
               @click="showMenu = !showMenu">
         <span class="group-hover:opacity-70 transition">menu</span>
       </button>

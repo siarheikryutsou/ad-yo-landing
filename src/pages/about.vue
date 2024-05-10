@@ -107,7 +107,7 @@ const team = [
     </div>
   </section>
 
-  <section id="team" class="wrapper !pt-28 !pb-40">
+  <section id="team" class="wrapper md:!pt-28 md:!pb-40">
     <h2 class="h1 mb-28">Team</h2>
     <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-16">
       <div class="" v-for="person in team" :key="person.name">

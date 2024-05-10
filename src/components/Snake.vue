@@ -10,7 +10,7 @@ const refBlockCT = ref<HTMLElement>();
 const refBlockRT = ref<HTMLElement>();
 const MIN_WIDTH_DESKTOP = 1280;
 const POINT_SIZE = 8;
-let points: {a: Square, b: Square, c: Square, d: Square, e: Square, f: Square, g: Square};
+let points: { a: Square, b: Square, c: Square, d: Square, e: Square, f: Square, g: Square, bb: Square, cc: Square, ccc: Square, dd: Square, ddd: Square, ee: Square };
 
 let animator: CanvasAnimator;
 
@@ -18,7 +18,7 @@ function onResize() {
   const canvas = refCanvas.value;
   const container = refContainer.value;
   if (canvas && container) {
-    if(animator) {
+    if (animator) {
       if (window.innerWidth < MIN_WIDTH_DESKTOP) {
         animator.pause();
         return;
@@ -63,45 +63,103 @@ function setPositions(): void {
 
     points.a.width = points.b.x - points.a.x;
 
-    points.c.x = Math.round(rectLB.right + ((rectCT.x - rectLB.right) / 2) - (points.c.width / 2));
-    points.c.y = Math.round(rectCT.height / 2 - (points.c.height / 2));
+    points.c.x = correctPoint(rectLB.right + ((rectCT.x - rectLB.right) / 2) - (points.c.width / 2));
+    points.c.y = correctPoint(rectCT.height / 2 - (points.c.height / 2));
 
-    points.d.x = Math.round(rectCT.x + (rectCT.width / 2) - (points.d.width / 2));
-    points.d.y = Math.round(rectLB.y + (rectLB.height * 0.65) - (points.d.height / 2));
+    points.bb.x = correctPoint(points.b.x + ((points.c.x - points.b.x) / 2));
+    points.bb.y = correctPoint(points.b.y + ((points.c.y - points.b.y) * 0.3));
 
-    points.e.x = Math.round(rectCT.right + ((rectRT.x - rectCT.right) / 2) - (points.e.width / 2));
-    points.e.y = Math.round(rectRT.bottom + ((rectRB.y - rectRT.bottom) * 0.4) - (points.e.height / 2));
+    points.d.x = correctPoint(rectCT.x + (rectCT.width / 2) - (points.d.width / 2));
+    points.d.y = correctPoint(rectCT.bottom + rectCT.height - (points.d.height / 2));
 
-    points.f.x = Math.round(rectRB.x + (rectRB.width * 0.4));
-    points.f.y = Math.round(yo.displayObject.y + (yo.displayObject.height / 2) - (points.g.height / 2));
+    points.cc.x = correctPoint(points.c.x + ((rectCT.x - points.c.x) / 2));
+    points.cc.y = correctPoint(points.d.y - (rectCT.height * 0.4));
 
-    points.g.x = Math.round(yo.displayObject.x - points.g.width - POINT_SIZE);
+    points.ccc.x = correctPoint(points.cc.x + ((points.d.x - points.cc.x) / 2));
+    points.ccc.y = correctPoint(points.d.y - (rectCT.height * 0.1));
+
+    points.e.x = correctPoint(rectCT.right + ((rectRT.x - rectCT.right) / 2) - (points.e.width / 2));
+    points.e.y = correctPoint(rectCT.bottom + (rectCT.height * 0.2));
+
+    points.dd.x = correctPoint(rectCT.right - (rectCT.width * 0.25));
+    points.dd.y = correctPoint(points.d.y - (rectCT.height * 0.1));
+
+    points.ddd.x = correctPoint(points.dd.x + ((points.e.x - points.dd.x) / 2));
+    points.ddd.y = correctPoint(points.e.y + ((points.dd.y - points.e.y) * 0.3));
+
+    points.f.x = correctPoint(rectRB.x + (rectRB.width * 0.4));
+    points.f.y = correctPoint(yo.displayObject.y + (yo.displayObject.height / 2) - (points.g.height / 2));
+
+    points.ee.x = correctPoint(points.e.x + ((points.f.x - points.e.x) * 0.3));
+    points.ee.y = correctPoint(points.e.y + ((points.f.y - points.e.y) * 0.1));
+
+    points.g.x = correctPoint(yo.displayObject.x - points.g.width - POINT_SIZE);
     points.g.y = points.f.y;
 
     points.f.width = points.g.x - points.f.x;
 
-
-    const heightBC = points.c.y - points.b.bottom;
-    const widthBC = points.c.x - points.b.right;
-    const maxPointsX = Math.floor(widthBC / POINT_SIZE);
-
-    //console.log(heightBC + "x" + widthBC);
-    //console.log("maxPoints:", maxPointsX);
-
-    /*for(let i = 0, point; i < maxPointsX; i++) {
-      point =
-      animator.addAnimation(
-        new CanvasAnimatorAnimation(new Square(points.b.right + (i * POINT_SIZE), points.b.bottom, POINT_SIZE, POINT_SIZE, "#FF00FF"), {}, 0)
-      )
-    }*/
+    drawLine(points.b, points.bb);
+    drawLine(points.bb, points.c);
+    drawLine(points.c, points.cc);
+    drawLine(points.cc, points.ccc);
+    drawLine(points.ccc, points.d);
+    drawLine(points.d, points.dd);
+    drawLine(points.dd, points.ddd);
+    drawLine(points.ddd, points.e);
+    drawLine(points.e, points.ee);
+    drawLine(points.ee, points.f);
 
   }
+}
 
+function correctPoint(value: number) {
+  return Math.round(value / POINT_SIZE) * POINT_SIZE;
+}
+
+function drawLine(pointA:Square, pointB:Square): void {
+  const dx = Math.abs(pointB.x - pointA.x);
+  const dy = Math.abs(pointB.y - pointA.y);
+  const sx = (pointA.x < pointB.x) ? POINT_SIZE : -POINT_SIZE;
+  const sy = (pointA.y < pointB.y) ? POINT_SIZE : -POINT_SIZE;
+
+  let err = (dx > dy ? dx : -dy) / 2; // Коррекция начальной ошибки
+  let e2;
+  let currentX = pointA.x + sx; // начинаем с первой точки после начальной
+  let currentY = pointA.y + sy; // начинаем с первой точки после начальной
+
+  // Отрисовка начальной точки
+  const startSquare = new Square(pointA.x, pointA.y, POINT_SIZE, POINT_SIZE, getRandomColor());
+  animator.addAnimation(new CanvasAnimatorAnimation(startSquare, {}, 0));
+
+  while (true) {
+    if ((sx > 0 && currentX > pointB.x) || (sx < 0 && currentX < pointB.x) ||
+      (sy > 0 && currentY > pointB.y) || (sy < 0 && currentY < pointB.y)) {
+      break; // Если следующий шаг выходит за пределы, заканчиваем
+    }
+
+    const square = new Square(currentX, currentY, POINT_SIZE, POINT_SIZE, getRandomColor());
+    animator.addAnimation(new CanvasAnimatorAnimation(square, {}, 0));
+
+    e2 = err;
+    if (e2 > -dx) {
+      err -= dy;
+      currentX += sx;
+    }
+    if (e2 < dy) {
+      err += dx;
+      currentY += sy;
+    }
+  }
+}
+
+function getRandomColor() {
+  //return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  return "black";
 }
 
 onMounted(async () => {
   const canvas = refCanvas.value;
-  if(!canvas) return;
+  if (!canvas) return;
 
   window.addEventListener("resize", onResize);
   onResize();
@@ -112,24 +170,30 @@ onMounted(async () => {
   const ad = new Bitmap(images[0]);
   const yo = new Bitmap(images[1]);
   points = {
-    a: new Square(ad.width + POINT_SIZE, Math.round(yo.height * 0.5), POINT_SIZE, POINT_SIZE, "#00FF00"),
-    b: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#FF00FF"),
-    c: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#0000FF"),
-    d: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#00FFFF"),
-    e: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#FF0000"),
-    f: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#FFFF00"),
-    g: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#808080")
-  }
+    a: new Square(ad.width + POINT_SIZE, correctPoint(yo.height * 0.5), POINT_SIZE, POINT_SIZE, "#000"),
+    b: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    bb: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    c: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    ccc: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    cc: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    d: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    dd: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    ddd: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    e: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    ee: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    f: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    g: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+  };
   animator.addAnimations(
     new CanvasAnimatorAnimation(ad, {}, 0),
     new CanvasAnimatorAnimation(points.a, {}, 0),
-    new CanvasAnimatorAnimation(points.b, {}, 0),
+    /*new CanvasAnimatorAnimation(points.b, {}, 0),
     new CanvasAnimatorAnimation(points.c, {}, 0),
     new CanvasAnimatorAnimation(points.d, {}, 0),
-    new CanvasAnimatorAnimation(points.e, {}, 0),
+    new CanvasAnimatorAnimation(points.e, {}, 0),*/
     new CanvasAnimatorAnimation(points.f, {}, 0),
     new CanvasAnimatorAnimation(points.g, {}, 0),
-    new CanvasAnimatorAnimation(yo, {}, 0),
+    new CanvasAnimatorAnimation(yo, {}, 0)
   );
 
   setPositions();
@@ -142,17 +206,19 @@ onMounted(async () => {
 });
 
 
-
 </script>
 
 <template>
   <div ref="refContainer" class="flex flex-col grow relative">
-    <canvas ref="refCanvas" class="hidden xl:block w-full h-full absolute top-0 left-0 right-0 bottom-0 bg-emerald-100" />
+    <canvas ref="refCanvas"
+            class="hidden xl:block w-full h-full absolute top-0 left-0 right-0 bottom-0" />
     <div class="xl:hidden">
       <img src="/images/snake_mob_decor_curve_1.svg" width="92" height="29" alt="" aria-hidden="true" loading="lazy" />
-      <img class="w-full mt-10 mb-20" src="/images/snake_mob.svg" width="312" height="148" aria-hidden="true" alt="" loading="lazy">
+      <img class="w-full mt-10 mb-20" src="/images/snake_mob.svg" width="312" height="148" aria-hidden="true" alt=""
+           loading="lazy">
     </div>
-    <div class="flex flex-col xl:flex-row justify-between h-full grow space-y-20 xl:space-y-0 xl:[&>*]:flex-1 xl:[&>*]:max-w-[300px] z-10">
+    <div
+      class="flex flex-col xl:flex-row justify-between h-full grow space-y-20 xl:space-y-0 xl:[&>*]:flex-1 xl:[&>*]:max-w-[300px] z-10">
       <div class="flex flex-col justify-end xl:flex-grow">
         <div ref="refBlockLB" class="info-block">
           <h3>Compliance <br class="hidden xl:block" />with GDPR data protection law</h3>
@@ -169,7 +235,7 @@ onMounted(async () => {
           <h3>Rewards for viewing ads</h3>
           <p>All revenue from ads in the current business model goes to media platforms. The customer themselves acts as
             a
-            product, receiving nothing but access to the platform itself. With Ad-yo, the customer receives all rewards
+            product, receiving nothing but access to the platform itself. With Ad-Yo, the customer receives all rewards
             minus the network commission.</p>
         </div>
       </div>

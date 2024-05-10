@@ -116,8 +116,6 @@ function onResize(event?: Event): void {
   if (refCanvas.value) {
     const canvas = refCanvas.value;
 
-    console.log("!!!!");
-
     if(window.innerWidth <= 768 && canvasWidth.value !== canvasWidthMobile) {
       redraw(canvasWidthMobile);
     } else if(window.innerWidth > 768 && canvasWidth.value !== canvasWidthDesktop) {
@@ -162,8 +160,10 @@ onMounted(() => {
       entries.forEach(entry => {
         if(entry.isIntersecting) {
           animator.isStarted() ? animator.resume() : animator.start();
+          document.querySelector("#header-logo")?.classList.add("text-white");
         } else {
           animator.isStarted() && animator.pause();
+          document.querySelector("#header-logo")?.classList.remove("animate-logo-to-white", "text-white");
         }
       });
     });

@@ -11,6 +11,7 @@ function onLogoLettersAnimationEnd(event: Event): void {
 onMounted(() => {
   refAd.value?.addEventListener("animationend", onLogoLettersAnimationEnd);
   refYo.value?.addEventListener("animationend", onLogoLettersAnimationEnd);
+  document.querySelector("#header-logo")?.classList.add("animate-logo-to-white");
 });
 
 onBeforeUnmount(() => {

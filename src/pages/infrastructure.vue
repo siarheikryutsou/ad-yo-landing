@@ -7,7 +7,7 @@ useSeoMeta({
 
 <template>
   <section class="wrapper bg-infra-top-mob md:bg-infra-top flex flex-col grow md:justify-between">
-    <h1 class="mb-6 md:mb-0">Ad-Yo App and Ad Manager</h1>
+    <h1 class="mb-6 md:mb-0">Ad-Yo App<br class="md:hidden" /> and Ad Manager</h1>
     <div class="flex md:flex-col md:items-end">
       <div class="max-w-[360px]">
         <h2 class="md:h1">Infrastructure</h2>
@@ -47,7 +47,7 @@ useSeoMeta({
       <h2 class="h1 lg:mb-10 wrapper lg:p-0">Ad manager</h2>
       <p class="wrapper lg:p-0">Through a user-friendly interface, the advertiser gets the opportunity to set up advertising campaigns,
         effectively focusing them on the right audience.</p>
-      <img src="/images/bg_infra_ad_manager_mob.webp" width="1449" height="1440" alt="Illustration: Mobile application screenshot" />
+      <img class="block lg:hidden" src="/images/bg_infra_ad_manager_mob.webp" width="1449" height="1440" alt="Illustration: Mobile application screenshot" />
     </div>
   </section>
 </template>
