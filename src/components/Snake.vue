@@ -10,7 +10,6 @@ const refBlockCT = ref<HTMLElement>();
 const refBlockRT = ref<HTMLElement>();
 const MIN_WIDTH_DESKTOP = 1280;
 const POINT_SIZE = 8;
-const isPLaying = false;
 let interval: number = 0;
 let loopTimeout: number = 0;
 let targetColor: "white" | "black" = "black";
@@ -214,7 +213,7 @@ onMounted(async () => {
 
   observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if(entry.isIntersecting) {
+      if (entry.isIntersecting) {
         animator.isStarted() ? animator.resume() : animator.start();
         play();
       } else {
@@ -229,13 +228,13 @@ onMounted(async () => {
 });
 
 
-function play():void {
-  if(interval) {
+function play(): void {
+  if (interval) {
     return;
   }
   let i = 0;
   interval = window.setInterval(() => {
-    if(i > pointAnimations.length - 1) {
+    if (i > pointAnimations.length - 1) {
       i = 0;
       clearInterval(interval);
       interval = 0;
@@ -250,7 +249,7 @@ function play():void {
 }
 
 function pause(): void {
-  if(interval) {
+  if (interval) {
     clearInterval(interval);
     interval = 0;
   }
@@ -262,7 +261,7 @@ onBeforeUnmount(() => {
   observer?.disconnect();
   interval && clearInterval(interval);
   loopTimeout && clearTimeout(loopTimeout);
-})
+});
 
 
 </script>
