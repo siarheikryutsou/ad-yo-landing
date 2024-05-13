@@ -12,7 +12,7 @@ const nftProfileCopy = [
   "Active customers make their NFT evolve by upgrading their profile with their actions.",
   "When a customer levels up, their NFT changes and acquires new features, reflecting the evolution of their interests and actions.",
   "Customers levels up depending on the fulfillment of tasks set by advertisers. As their profile evolves and the dynamic NFT acquires new features, the rarity and therefore the value of the NFT goes up.",
-  "Customers can display their profile NFTs as standalone digital art objects on OpenSea, Refinable, Rarible, NFTICALLY, NFTrade and other marketplaces.",
+  "Customers can display their profile NFTs as standalone digital art objects on OpenSea, Refinable, Rarible, NFTICALLY, NFTrade and other marketplaces."
 ];
 
 </script>
@@ -24,8 +24,10 @@ const nftProfileCopy = [
       <h2>Decentralized platform for depersonalized data trading</h2>
     </div>
     <div class="flex flex-col w-full grow items-center justify-center">
-      <img src="/images/tech_scheme_1.webp" alt="Technology scheme" width="2020" height="714" loading="lazy" class="w-full lg:w-4/5 hidden xl:block" />
-      <img src="/images/tech_scheme_1_mob.svg" alt="Technology scheme" width="325" height="822" class="w-full max-w-[400px] mt-14 xl:hidden" />
+      <img src="/images/tech_scheme_1.webp" alt="Technology scheme" width="2020" height="714" loading="lazy"
+           class="w-full lg:w-4/5 hidden xl:block" />
+      <img src="/images/tech_scheme_1_mob.svg" alt="Technology scheme" width="325" height="822"
+           class="w-full max-w-[400px] mt-14 xl:hidden" />
     </div>
   </section>
 
@@ -33,7 +35,8 @@ const nftProfileCopy = [
     <h2 class="h1 mb-20">NFT profile</h2>
 
     <div class="hidden xl:grid grid-cols-3 grid-rows-2 gap-y-20">
-      <ElementsTechNFTItem v-for="(text, index) in nftProfileCopy" :key="index" :num="index + 1" :num-first="index < 3" :text="text" />
+      <ElementsTechNFTItem v-for="(text, index) in nftProfileCopy" :key="index" :num="index + 1" :num-first="index < 3"
+                           :text="text" />
     </div>
 
     <div class="xl:hidden flex grow items-center">
@@ -55,7 +58,7 @@ const nftProfileCopy = [
                 }
               },
             }"
-        >
+      >
         <SwiperSlide v-for="(text, index) in nftProfileCopy" :key="index">
           <ElementsTechNFTItem :num="index + 1" :num-first="true" :text="text" />
         </SwiperSlide>
@@ -95,7 +98,7 @@ const nftProfileCopy = [
         <div class="info-block">
           <h3>Data storage</h3>
           <p>The data is stored directly on customer's devices, representing only a set of hashes that makes it possible
-            to select the target audience according to a specified parameters.</p>
+            to select the target audience according to specified parameters.</p>
         </div>
         <div class="info-block">
           <h3>Ad display</h3>

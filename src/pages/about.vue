@@ -11,7 +11,7 @@ const roadmapContent = [
     year: "2023",
     list: [
       "Blockchain testnet rollout",
-      "AYO token issuance",
+      "ADYO token issuance",
       "Campaign manager",
       "Back-end architecture",
       "App prototype",
@@ -57,7 +57,7 @@ const team = [
     name: "Pavlo Denysiuk",
     img: "team_pavlo.png",
     position: "Partner, CEO",
-    description: "Experienced Chief Operating Officer",
+    description: "Experienced Chief Executive Officer",
     experience: "Well rounded with experience of working in the management consulting industry. Skilled in Sales, Leadership, Management, Marketing, Merger & Acquisitions, Business Development and Marketing Strategy with a proven history of working in the e-commerce industry."
   },
   {

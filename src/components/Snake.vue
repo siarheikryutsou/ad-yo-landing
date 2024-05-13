@@ -10,8 +10,22 @@ const refBlockCT = ref<HTMLElement>();
 const refBlockRT = ref<HTMLElement>();
 const MIN_WIDTH_DESKTOP = 1280;
 const POINT_SIZE = 8;
-let points: { a: Square, b: Square, c: Square, d: Square, e: Square, f: Square, g: Square, bb: Square, cc: Square, ccc: Square, dd: Square, ddd: Square, ee: Square };
-const pointAnimations:CanvasAnimatorAnimation[] = [];
+let points: {
+  a: Square,
+  b: Square,
+  c: Square,
+  d: Square,
+  e: Square,
+  f: Square,
+  g: Square,
+  bb: Square,
+  cc: Square,
+  ccc: Square,
+  dd: Square,
+  ddd: Square,
+  ee: Square
+};
+const pointAnimations: CanvasAnimatorAnimation[] = [];
 let yoAnimation: CanvasAnimatorAnimation;
 let animator: CanvasAnimator;
 
@@ -98,7 +112,7 @@ function setPositions(): void {
 
     points.f.width = points.g.x - points.f.x;
 
-    if(pointAnimations.length) {
+    if (pointAnimations.length) {
       pointAnimations.forEach(el => animator.removeAnimation(el));
     }
 
@@ -182,7 +196,7 @@ onMounted(async () => {
     e: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
     ee: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
     f: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
-    g: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
+    g: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000")
   };
 
   yoAnimation = new CanvasAnimatorAnimation(yo, {}, 0);
@@ -231,10 +245,9 @@ onMounted(async () => {
       <div class="flex items-start">
         <div ref="refBlockCT" class="info-block">
           <h3>Rewards for viewing ads</h3>
-          <p>All revenue from ads in the current business model goes to media platforms. The customer themselves acts as
-            a
-            product, receiving nothing but access to the platform itself. With Ad-Yo, the customer receives all rewards
-            minus the network commission.</p>
+          <p>All revenue from ads in the current business model goes to media platforms. The customers themselves act as
+            a product, receiving nothing but access to the platform itself. With Ad-Yo, the customer receives all
+            rewards minus the network commission.</p>
         </div>
       </div>
 
@@ -247,7 +260,7 @@ onMounted(async () => {
 
         <div ref="refBlockRB" class="info-block">
           <h3>Confidentiality</h3>
-          <p>The platform provides advertisers with access to each customer and their interests without revealing the
+          <p>The platform provides advertisers access to each customer and their interests without revealing the
             identity of that customer.</p>
         </div>
       </div>

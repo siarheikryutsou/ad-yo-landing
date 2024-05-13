@@ -110,8 +110,8 @@ onMounted(() => {
       <div class="flex flex-col gap-14 xl:flex-row xl:gap-12 grow xl:justify-between xl:[&>.copy]:max-w-[300px]">
         <div class="flex flex-col gap-14 xl:gap-0 justify-between copy">
           <p>Every individual has a set of values and interests that come together in a unique way</p>
-          <p>For every Ad-Yo customer, a dynamic NFT artwork is created using generative technologies, based on the
-            personal data provided by the customer</p>
+          <p>The NFT reflects the evolution of the profile, which develops alongside the customer's interactions with
+            advertisers and purchasing choices</p>
         </div>
 
         <div class="flex items-center">
@@ -119,8 +119,8 @@ onMounted(() => {
         </div>
 
         <div class="flex flex-col copy">
-          <p>The NFT reflects the evolution of the profile, which develops alongside the customer's interactions with
-            advertisers and purchasing choices</p>
+          <p>For every Ad-Yo customer, a dynamic NFT artwork is created using generative technologies, based on the
+            personal data provided by the customer</p>
         </div>
       </div>
       <div class="xl:hidden flex justify-end">
@@ -142,11 +142,10 @@ onMounted(() => {
       class="flex justify-center items-start xl:justify-between xl:items-center flex-col xl:flex-row xl:[&>.info-block]:max-w-[300px] wrapper grow">
       <div class="info-block">
         <ElementsCopyCreateProfile class="hidden xl:block" />
-        <p>Encrypted snapshots of the customer's depersonalized data are stored on the Ad–Yo blockchain</p>
+        <p>Encrypted snapshots of the customer's depersonalized data are stored on the Ad–Yo blockchain.</p>
       </div>
       <div class="info-block mt-10 xl:mt-0">
-        <p>The customer's personal data is stored securely and exclusively on their mobile device, and only they have
-          access to it</p>
+        <p>The customer's personal data is stored securely on their mobile device, and only they have access to it</p>
       </div>
     </div>
   </section>
@@ -156,8 +155,7 @@ onMounted(() => {
       <div class="flex flex-col justify-center">
         <h2 class="mb-10 lg:mb-0">A transparent decentralized economy</h2>
         <div class="flex gap-6 lg:block lg:space-y-16">
-          <p>The advertiser purchases ad impressions by verified customer. Blockchain provides transparency of
-            transactions and ad views</p>
+          <p>The advertiser purchases ad impressions by verified customers. Blockchain provides transparency of transactions and ad views</p>
           <p>Reliable information about the number of ads viewed is stored in a decentralized database on the blockchain
             and can be easily accessed</p>
         </div>
@@ -166,7 +164,7 @@ onMounted(() => {
       <div class="flex [&>*]:flex-1 lg:[&>*]:flex-none lg:flex-col justify-center gap-6">
         <p>The advertiser gets the opportunity to set up advertising campaigns, effectively focusing them on the right
           audience</p>
-        <p>Effective audience targeting based on accurate personal data provided by the customer</p>
+        <p>Effective audience targeting is performed based on accurate personal data provided by the customer</p>
       </div>
     </div>
 
