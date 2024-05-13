@@ -129,7 +129,7 @@ onMounted(() => {
     </div>
   </section>
 
-  <section class="xl:bg-bag flex flex-col bg-[#CFCDD2]">
+  <section class="xl:bg-bag flex flex-col bg-[#CFCDD2] !pt-0 !xl:pt-8">
     <div class="bg-bag-mob xl:bg-none">
       <div class="w-1/2 wrapper xl:w-full xl:!p-0">
         <h2 class="font-size-[20px] md:h1 xl:p-0 xl:!text-[8.05vw] xl:text-center xl:mt-32">My data<br

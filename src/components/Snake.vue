@@ -28,6 +28,7 @@ let points: {
 const pointAnimations: CanvasAnimatorAnimation[] = [];
 let yoAnimation: CanvasAnimatorAnimation;
 let animator: CanvasAnimator;
+let observer: IntersectionObserver;
 
 function onResize() {
   const canvas = refCanvas.value;
@@ -210,12 +211,25 @@ onMounted(async () => {
 
   setPositions();
 
-  animator.start();
-  /*setTimeout(() => {
-    animator.pause();
-  }, 1000);*/
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        animator.isStarted() ? animator.resume() : animator.start();
+      } else {
+        animator.isStarted() && animator.pause();
+      }
+    });
+  });
+
+  observer.observe(canvas);
 
 });
+
+onBeforeUnmount(() => {
+  animator?.stop();
+  window.removeEventListener("resize", onResize);
+  observer?.disconnect();
+})
 
 
 </script>
