@@ -40,7 +40,7 @@ timeline[114] = timeline[144] = 31;
 timeline[117] = timeline[147] = 34;
 timeline[120] = timeline[150] = 37;
 
-function startAnimation(images: HTMLImageElement[]) {
+function startAnimation(images: (string | undefined)[]) {
   console.log("Preserves startAnimation");
   const section = refSection.value;
   if (section) {
@@ -54,7 +54,7 @@ function startAnimation(images: HTMLImageElement[]) {
         frame = timeline[frameIndex] || frame;
         const image = images[frames.indexOf(frame)];
         if (image) {
-          section.style.backgroundImage = `url(${image.src})`;
+          section.style.backgroundImage = `url(${image})`;
         } else {
           console.error(`Image ${frame} not found`);
         }
@@ -80,11 +80,23 @@ onMounted(async () => {
   if(!refSection.value) return;
 
   const images = await loadImages(frames.map(frame => `/images/preserves/${frame}.webp`));
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  const imagesDataUrls = images.map(image => {
+    if(ctx) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.width = image.width;
+      canvas.height = image.height;
+      ctx.drawImage(image, 0, 0);
+      return canvas.toDataURL();
+    }
+  });
 
   observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        startAnimation(images);
+        startAnimation(imagesDataUrls);
       } else {
         stopAnimation();
       }
