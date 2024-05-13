@@ -10,6 +10,11 @@ const refBlockCT = ref<HTMLElement>();
 const refBlockRT = ref<HTMLElement>();
 const MIN_WIDTH_DESKTOP = 1280;
 const POINT_SIZE = 8;
+const isPLaying = false;
+let interval: number = 0;
+let loopTimeout: number = 0;
+let targetColor: "white" | "black" = "black";
+
 let points: {
   a: Square,
   b: Square,
@@ -25,7 +30,7 @@ let points: {
   ddd: Square,
   ee: Square
 };
-const pointAnimations: CanvasAnimatorAnimation[] = [];
+let pointAnimations: CanvasAnimatorAnimation[] = [];
 let yoAnimation: CanvasAnimatorAnimation;
 let animator: CanvasAnimator;
 let observer: IntersectionObserver;
@@ -73,10 +78,10 @@ function setPositions(): void {
     yo.displayObject.x = canvas.width - yo.displayObject.width;
     yo.displayObject.y = Math.round((rectRT.bottom + ((rectRB.y - rectRT.bottom) * 0.65)) - (yo.displayObject.height / 2));
 
-    points.b.x = Math.round(rectLB.width * 0.6 - (points.b.width / 2));
-    points.b.y = points.a.y;
+    points.b.x = correctPoint(rectLB.width * 0.6 - (points.b.width / 2));
+    points.b.y = correctPoint(points.a.y);
 
-    points.a.width = points.b.x - points.a.x;
+    //points.a.width = points.b.x - points.a.x;
 
     points.c.x = correctPoint(rectLB.right + ((rectCT.x - rectLB.right) / 2) - (points.c.width / 2));
     points.c.y = correctPoint(rectCT.height / 2 - (points.c.height / 2));
@@ -115,8 +120,10 @@ function setPositions(): void {
 
     if (pointAnimations.length) {
       pointAnimations.forEach(el => animator.removeAnimation(el));
+      pointAnimations = [];
     }
 
+    drawLine(points.a, points.b);
     drawLine(points.b, points.bb);
     drawLine(points.bb, points.c);
     drawLine(points.c, points.cc);
@@ -127,6 +134,7 @@ function setPositions(): void {
     drawLine(points.ddd, points.e);
     drawLine(points.e, points.ee);
     drawLine(points.ee, points.f);
+    drawLine(points.f, points.g);
 
   }
 }
@@ -146,12 +154,12 @@ function drawLine(pointA: Square, pointB: Square): void {
   let currentY = pointA.y;
 
   while (true) {
-    const square = new Square(currentX, currentY, POINT_SIZE, POINT_SIZE, getRandomColor());
+    const square = new Square(currentX, currentY, POINT_SIZE, POINT_SIZE, "white");
     const animation = new CanvasAnimatorAnimation(square, {}, 0);
     pointAnimations.push(animation);
     animator.addAnimation(animation);
 
-    if (currentX === pointB.x && currentY === pointB.y) break;
+    if (currentX >= pointB.x && currentY >= pointB.y) break;
 
     const e2 = 2 * err;
     if (e2 >= dy) {
@@ -167,10 +175,6 @@ function drawLine(pointA: Square, pointB: Square): void {
   }
 }
 
-function getRandomColor() {
-  //return "#" + Math.floor(Math.random() * 16777215).toString(16);
-  return "black";
-}
 
 onMounted(async () => {
   const canvas = refCanvas.value;
@@ -185,7 +189,7 @@ onMounted(async () => {
   const ad = new Bitmap(images[0]);
   const yo = new Bitmap(images[1]);
   points = {
-    a: new Square(ad.width + POINT_SIZE, correctPoint(yo.height * 0.5), POINT_SIZE, POINT_SIZE, "#000"),
+    a: new Square(correctPoint(ad.width + POINT_SIZE), correctPoint(yo.height * 0.5), POINT_SIZE, POINT_SIZE, "#000"),
     b: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
     bb: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
     c: new Square(0, 0, POINT_SIZE, POINT_SIZE, "#000"),
@@ -203,9 +207,6 @@ onMounted(async () => {
   yoAnimation = new CanvasAnimatorAnimation(yo, {}, 0);
   animator.addAnimations(
     new CanvasAnimatorAnimation(ad, {}, 0),
-    new CanvasAnimatorAnimation(points.a, {}, 0),
-    new CanvasAnimatorAnimation(points.f, {}, 0),
-    new CanvasAnimatorAnimation(points.g, {}, 0),
     yoAnimation
   );
 
@@ -215,8 +216,10 @@ onMounted(async () => {
     entries.forEach(entry => {
       if(entry.isIntersecting) {
         animator.isStarted() ? animator.resume() : animator.start();
+        play();
       } else {
         animator.isStarted() && animator.pause();
+        pause();
       }
     });
   });
@@ -225,10 +228,40 @@ onMounted(async () => {
 
 });
 
+
+function play():void {
+  if(interval) {
+    return;
+  }
+  let i = 0;
+  interval = window.setInterval(() => {
+    if(i > pointAnimations.length - 1) {
+      i = 0;
+      clearInterval(interval);
+      interval = 0;
+      loopTimeout = window.setTimeout(() => {
+        targetColor = targetColor === "white" ? "black" : "white";
+        play();
+      }, 2000);
+    }
+    pointAnimations[i].displayObject.color = targetColor;
+    i++;
+  }, 25);
+}
+
+function pause(): void {
+  if(interval) {
+    clearInterval(interval);
+    interval = 0;
+  }
+}
+
 onBeforeUnmount(() => {
   animator?.stop();
   window.removeEventListener("resize", onResize);
   observer?.disconnect();
+  interval && clearInterval(interval);
+  loopTimeout && clearTimeout(loopTimeout);
 })
 
 
