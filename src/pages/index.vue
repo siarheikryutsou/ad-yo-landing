@@ -151,7 +151,7 @@ onMounted(() => {
   </section>
 
   <Preserves>
-    <div class="wrapper flex flex-col lg:flex-row justify-between lg:[&>*]:space-y-16 lg:[&>*]:max-w-[200px] grow">
+    <div class="wrapper flex flex-col lg:flex-row justify-between lg:[&>*]:space-y-16 lg:[&>*]:max-w-[200px] grow z-10">
       <div class="flex flex-col justify-center">
         <h2 class="mb-10 lg:mb-0">A transparent decentralized economy</h2>
         <div class="flex gap-6 lg:block lg:space-y-16">

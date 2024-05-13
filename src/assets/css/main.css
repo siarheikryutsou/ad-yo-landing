@@ -24,6 +24,7 @@
     .bg-preserves {
         background: url("/images/preserves/1.webp") no-repeat center center / contain;
         transform: translate3d(0, 0, 0);
+        @apply bg-[center_top_60%] md:bg-[center_top_70%] lg:bg-center;
     }
 
     .bg-artichoke {

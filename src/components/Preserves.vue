@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { loadImages } from "~/shared/lib/CanvasAnimator";
-import { SymbolKind } from "vscode-languageserver-types";
 
 const refSection = ref<HTMLElement>();
 const TOTAL_FRAMES = 153;
@@ -10,6 +9,8 @@ let observer: IntersectionObserver;
 const timeline: number[] = new Array(TOTAL_FRAMES);
 const FPS = 30;
 const INTERVAL = 1000 / FPS;
+const elements:HTMLElement[] = [];
+let currentEl:HTMLElement;
 
 // first frame
 timeline[0] = timeline[21] = timeline[60] = timeline[93] = timeline[123] = 1;
@@ -40,24 +41,50 @@ timeline[114] = timeline[144] = 31;
 timeline[117] = timeline[147] = 34;
 timeline[120] = timeline[150] = 37;
 
-function startAnimation(images: (string | undefined)[]) {
+function startAnimation(images: HTMLImageElement[]) {
   console.log("Preserves startAnimation");
   const section = refSection.value;
   if (section) {
     let frameIndex = 0;
     let frame: number;
     let lastTime = 0;
+
+    if(!elements.length) {
+      images.forEach((image, index) => {
+        const el = document.createElement("div");
+        el.style.position = "absolute";
+        el.style.width = el.style.height = "100%";
+        el.style.top = el.style.left = "0";
+        el.style.backgroundImage = `url(${image.src})`;
+        el.style.display = "none";
+        el.classList.add("bg-preserves");
+        elements.push(el);
+        refSection.value?.append(el);
+      });
+    }
+
     const animate = (time: number) => {
       if(!lastTime || (time - lastTime) >= INTERVAL) {
         //console.log("draw");
         lastTime = time;
-        frame = timeline[frameIndex] || frame;
-        const image = images[frames.indexOf(frame)];
+        frame = timeline[frameIndex] || 0;
+
+        const el = elements[frames.indexOf(frame)];
+
+        if(el) {
+          if(currentEl) {
+            currentEl.style.display = "none";
+          }
+          currentEl = el;
+          currentEl.style.display = "block";
+        }
+
+        /*const image = images[frames.indexOf(frame)];
         if (image) {
-          section.style.backgroundImage = `url(${image})`;
+          section.style.backgroundImage = `url(${image.src})`;
         } else {
           console.error(`Image ${frame} not found`);
-        }
+        }*/
 
         frameIndex = (frameIndex + 1) % timeline.length;
       }
@@ -80,23 +107,11 @@ onMounted(async () => {
   if(!refSection.value) return;
 
   const images = await loadImages(frames.map(frame => `/images/preserves/${frame}.webp`));
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-
-  const imagesDataUrls = images.map(image => {
-    if(ctx) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      canvas.width = image.width;
-      canvas.height = image.height;
-      ctx.drawImage(image, 0, 0);
-      return canvas.toDataURL();
-    }
-  });
 
   observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        startAnimation(imagesDataUrls);
+        startAnimation(images);
       } else {
         stopAnimation();
       }
@@ -117,7 +132,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="bg-preserves flex flex-col h-full bg-[center_top_60%] md:bg-[center_top_70%] lg:bg-center" ref="refSection">
+  <section class="flex flex-col h-full relative" ref="refSection">
     <slot />
   </section>
 </template>
