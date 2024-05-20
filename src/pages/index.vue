@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import TransactionAnimation from "~/components/TransactionAnimation.vue";
+
 const refH1 = ref<HTMLElement>();
 const animationIsComplete = ref(false);
 
@@ -28,7 +30,8 @@ onMounted(() => {
 
   <section class="bg-[#EAEAEA] p-0 xl:px-24 xl:py-40 flex flex-col xl:justify-center">
     <div class="flex flex-col xl:flex-row justify-between xl:gap-12 grow xl:[&>.mv]:max-w-[300px]">
-      <h2 class="mob-p md:wrapper xl:p-0 mv">Ad–Yo — is a scalable open-source platform based on blockchain and peer-to-peer
+      <h2 class="mob-p md:wrapper xl:p-0 mv">Ad–Yo — is a scalable open-source platform based on blockchain and
+        peer-to-peer
         networking technologies</h2>
 
       <div class="relative xl:w-2/5 xl:flex-shrink-0 grow flex items-center w-full">
@@ -56,7 +59,7 @@ onMounted(() => {
     </div>
   </section>
 
-  <section class="wrapper flex flex-col justify-center">
+  <section class="wrapper flex flex-col justify-center bg-[#fcfcff]">
     <h2 class="max-w-[380px] mx-auto mb-12">The transaction for viewed ads<br /> is conducted between customers and
       advertisers
       without third parties</h2>
@@ -68,7 +71,7 @@ onMounted(() => {
 
       <div class="items-center gap-1 mt-6 mb-12">
         <nuxt-icon name="intro_ad" filled />
-        <div class="w-full h-[5px] bg-black mt-2"></div>
+        <TransactionAnimation />
         <nuxt-icon name="intro_yo" class="pt-[10px]" filled />
       </div>
 
@@ -144,8 +147,8 @@ onMounted(() => {
         <ElementsCopyCreateProfile class="hidden xl:block" />
         <p>Encrypted snapshots of the customer's depersonalized data are stored on the Ad–Yo blockchain.</p>
       </div>
-      <div class="info-block mt-10 xl:mt-0">
-        <p>The customer's personal data is stored securely on their mobile device, and only they have access to it</p>
+      <div class="info-block mt-10 xl:mt-0 xl:!max-w-[315px]">
+        <p>The customer's personal data is stored securely on their mobile device, and only they have access to it.</p>
       </div>
     </div>
   </section>
@@ -155,7 +158,8 @@ onMounted(() => {
       <div class="flex flex-col justify-center">
         <h2 class="mb-10 lg:mb-0">A transparent decentralized economy</h2>
         <div class="flex gap-6 lg:block lg:space-y-16">
-          <p>The advertiser purchases ad impressions by verified customers. Blockchain provides transparency of transactions and ad views</p>
+          <p>The advertiser purchases ad impressions by verified customers. Blockchain provides transparency of
+            transactions and ad views</p>
           <p>Reliable information about the number of ads viewed is stored in a decentralized database on the blockchain
             and can be easily accessed</p>
         </div>

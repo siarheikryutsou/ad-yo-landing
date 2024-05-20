@@ -23,7 +23,7 @@ export class CanvasAnimator {
   }
 
   public stop() {
-    console.log("stop");
+    //console.log("stop");
     if (this.isStarted()) {
       cancelAnimationFrame(this.animationFrameId!);
       this.animationFrameId = null;
@@ -31,13 +31,13 @@ export class CanvasAnimator {
   }
 
   public pause() {
-    console.log("pause");
+    //console.log("pause");
     this.paused = true;
     this.pauseTime = performance.now();
   }
 
   public resume() {
-    console.log("resume");
+    //console.log("resume");
     if(this.animationFrameId === null && !this.paused) {
       this.start();
       return;
