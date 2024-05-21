@@ -3,6 +3,7 @@ import { ROUTES } from "~/shared";
 
 const showMenu = ref<boolean>(false);
 const refMenu = ref<HTMLElement | null>(null);
+const refMenuWrapper = ref<HTMLElement>();
 const route = useRoute();
 const menuItems = [
   [
@@ -37,9 +38,10 @@ function onKeyDown(event: KeyboardEvent) {
 
 function onClick(event: MouseEvent) {
   const target = event.target as Node;
+  console.log(target, refMenu.value);
   if (target && showMenu.value) {
     const isMenu = refMenu.value?.contains(target);
-    if(!isMenu || target.nodeName === "UL") {
+    if (!isMenu || target.nodeName === "UL" || target === refMenuWrapper.value) {
       showMenu.value = false;
     }
   }
@@ -49,6 +51,12 @@ function setMenuItemsDelay() {
   document.querySelectorAll(".menu-item").forEach((el, index) => {
     (el as HTMLElement).style.animationDelay = `${Math.round(Math.random() * 350)}ms`;
   });
+}
+
+function onMenuButtonClick() {
+  if (window.innerWidth < 768) {
+    showMenu.value = false;
+  }
 }
 
 onMounted(() => {
@@ -73,19 +81,23 @@ watch(showMenu, () => {
 </script>
 
 <template>
-  <nav class="absolute w-full top-0 md:relative md:w-auto md:h-auto md:bg-transparent overflow-hidden md:overflow-visible"
-       ref="refMenu"
-       :class="{'bg-white bg-opacity-95 h-screen': showMenu}"
+  <nav
+    class="absolute w-full top-0 md:relative md:w-auto md:h-auto md:bg-transparent overflow-hidden md:overflow-visible"
+    ref="refMenu"
+    :class="{'bg-white bg-opacity-95 h-screen': showMenu}"
   >
     <div class="flex justify-end">
-      <button class="flex-auto mt-3 mr-6 md:mt-0 md:mr-0 flex-shrink flex-grow-0 text-white font-semibold text-lg bg-black px-3 md:px-10 py-1.5 group"
-              @click="showMenu = !showMenu">
+      <button
+        class="flex-auto mt-3 mr-6 md:mt-0 md:mr-0 flex-shrink flex-grow-0 text-white font-semibold text-lg bg-black px-3 md:px-10 py-1.5 group"
+        @click="showMenu = !showMenu">
         <span class="group-hover:opacity-70 transition">menu</span>
       </button>
     </div>
 
-    <div v-show="showMenu" class="absolute wrapper !py-0 md:!p-0 w-full md:w-auto md:right-[35px] overflow-auto h-full md:h-auto md:overflow-visible">
-      <ul v-for="(menuRow, index) in menuItems" :key="index" class="relative flex flex-col items-end md:flex-row md:justify-end -mt-px">
+    <div v-show="showMenu" ref="refMenuWrapper"
+         class="absolute wrapper !py-0 md:!p-0 w-full md:w-auto md:right-[35px] overflow-auto h-full md:h-auto md:overflow-visible">
+      <ul v-for="(menuRow, index) in menuItems" :key="index"
+          class="relative flex flex-col items-end md:flex-row md:justify-end -mt-px">
         <li v-for="menuItem in menuRow"
             class="-mb-px last:mb-0 md:last:-mb-px md:-mr-px md:mt-0 after:content-[''] after:w-full after:absolute after:border after:border-b-black after:bottom-0 after:left-0 md:after:content-none"
             :key="menuItem.name"
@@ -97,7 +109,9 @@ watch(showMenu, () => {
           >
             <span
               class="px-2 py-1 border border-white bg-white hover:bg-black hover:text-white transition-colors ease-in duration-200"
-              :class="{'text-white !bg-black transition-none' : menuItem.path === route.fullPath}">
+              :class="{'text-white !bg-black transition-none' : menuItem.path === route.fullPath}"
+              @click="onMenuButtonClick"
+            >
               {{ menuItem.name }}
             </span>
           </nuxt-link>
