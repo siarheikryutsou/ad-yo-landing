@@ -85,6 +85,19 @@
         transform-origin: top left;
         width: 100%;
     }
+
+    .abstraction-wrapper {
+        height: 150px;
+        .abstraction-canvas {
+            &.horizontal {
+                transform: rotate(270deg);
+                transform-origin: top left;
+                position: absolute;
+                top: 150px;
+                left: 0;
+            }
+        }
+    }
 }
 
 @layer utilities {
