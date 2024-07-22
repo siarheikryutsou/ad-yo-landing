@@ -20,13 +20,13 @@
         <address class="not-italic">124 Rue Réaumur, 75002 Paris, France</address>
       </div>
       <div class="flex [&>*]:size-5 gap-5">
-        <a href="#" title="Follow us on Twitter" aria-label="Follow us on Twitter">
+        <a href="https://x.com/AdYoAd" title="Follow us on Twitter" aria-label="Follow us on Twitter" target="_blank">
           <nuxt-icon name="twitter" filled />
         </a>
-        <a href="#" title="Follow us on LinkedIn" aria-label="Follow us on LinkedIn">
+        <a href="https://de.linkedin.com/company/ad-yo" title="Follow us on LinkedIn" aria-label="Follow us on LinkedIn" target="_blank">
           <nuxt-icon name="linkedin" filled />
         </a>
-        <a href="#" title="Follow us on Telegram" aria-label="Follow us on Telegram">
+        <a href="https://t.me/adyoblockchain" title="Follow us on Telegram" aria-label="Follow us on Telegram" target="_blank">
           <nuxt-icon name="telegram" filled />
         </a>
       </div>

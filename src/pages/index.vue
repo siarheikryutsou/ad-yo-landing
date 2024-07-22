@@ -24,7 +24,7 @@ onMounted(() => {
     <div class="wrapper h-dvh lg:h-auto flex items-center">
       <h1 ref="refH1"
           class="opacity-0 z-10 max-w-[200px] md:max-w-[490px] lg:max-w-[530px] lg:mt-24 text-white animate-index-h1-show">
-        Blockchain protocol<br class="md:hidden" /> for depersonalized data trading</h1>
+        Blockchain<br class="md:hidden" /> protocol for<br class="md:hidden" /> depersonalized<br class="md:hidden" /> data trading</h1>
     </div>
   </section>
 

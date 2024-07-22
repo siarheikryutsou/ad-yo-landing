@@ -134,8 +134,8 @@ const team = [
           </div>
         </div>
       </div>
-
-      <img class="w-full" src="/images/about_roadmap.svg" alt="Illustration" aria-hidden="true" width="1760" height="109">
+<!--        <img class="w-full" src="/images/about_roadmap.svg" alt="Illustration" aria-hidden="true" width="1760" height="109">-->
+      <Abstraction direction="horizontal" />
 
       <div class="wrapper flex [&>*]:flex-1">
         <div v-for="point in roadmapContent" :key="point.title">
@@ -152,7 +152,9 @@ const team = [
       <h2 class="h1 mb-28">Roadmap</h2>
       <div class="flex gap-3">
 
-        <div class="bg-roadmap-mob w-[64px] shrink-0" />
+        <div class="w-[64px] shrink-0">
+          <Abstraction direction="verticalStatic" />
+        </div>
 
         <div class="grow space-y-14">
           <div v-for="point in roadmapContent" :key="point.title">

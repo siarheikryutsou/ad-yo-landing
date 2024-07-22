@@ -304,7 +304,7 @@ onBeforeUnmount(() => {
             be verified for authenticity.</p>
         </div>
 
-        <div ref="refBlockRB" class="info-block">
+        <div ref="refBlockRB" class="info-block mt-20 xl:mt-0">
           <h3>Confidentiality</h3>
           <p>The platform provides advertisers access to each customer and their interests without revealing the
             identity of that customer.</p>
